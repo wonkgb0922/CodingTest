@@ -11,11 +11,12 @@
 
 using namespace std;
 
+int maax = 0;
 long long cnt = 0;
 int ary[21] = { 0 }; // 박스의 갯수
 
 
-void box(int l, int w, int h)
+void box(int l, int w, int h, int c_index)
 {
     if (l <= 0 || w <= 0 || h <= 0) return;
     int k = min({ l,w,h });
@@ -24,28 +25,32 @@ void box(int l, int w, int h)
     //    printf("%d ", arr[i]);
     //printf("\n");
     
-    int index = log2(k);
+    int index = c_index;
     int len = 1;
-    int it = index;
-    while(it>=0)
+    for (int i = 0; i < index; i++)
     {
-        if (ary[it] > 0) break;
-        it--;
+        len *= 2;
     }
-    if (it < 0)
+    while (index >= 0)
     {
-        cnt = -1;
+        if (len <= k && ary[index] > 0)
+        {
+            // 최대한 가장 큰 박스를 채울 수 있으면 채워넣기 그리고 재귀호출
+            ary[index]--;
+            cnt++;
+            box(l - len, w, h, index);
+            box(len, w, h- len, index);
+            box(len, w- len, len, index);
+            break;
+        }
+        index--;
+        len /= 2;
+    }
+    if (index < 0)
+    {
         printf("-1");
         exit(0);
     }
-    
-    // 최대한 가장 큰 박스를 채울 수 있으면 채워넣기 그리고 재귀호출
-    ary[it]--;
-    cnt++;
-    len = pow(2, it);
-    box(l - len, w, h);
-    box(len, w, h- len);
-    box(len, w- len, len);
 }
 
 int main(void) {
@@ -62,7 +67,8 @@ int main(void) {
         ary[a] = b;
         //if (maax < a) maax = a;
     }
-    box(l, w, h);
+    maax = n - 1;
+    box(l, w, h, maax);
     printf("%lld", cnt);
     return 0;
 }
