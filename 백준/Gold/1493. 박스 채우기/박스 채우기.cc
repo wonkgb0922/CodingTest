@@ -37,7 +37,6 @@ void box(int l, int w, int h)
         cnt = -1;
         printf("-1");
         exit(0);
-        return;
     }
     
     // 최대한 가장 큰 박스를 채울 수 있으면 채워넣기 그리고 재귀호출
