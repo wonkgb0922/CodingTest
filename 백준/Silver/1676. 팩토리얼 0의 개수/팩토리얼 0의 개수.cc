@@ -1,43 +1,43 @@
 #include <stdio.h>
+#include <cmath>
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
+#include <map>
+#include <set>
 
 #pragma warning (disable:4996)
 
 using namespace std;
-long long gcd(long long a, long long b)
-{
-    if (a % b) return gcd(b, a % b);
-    return b;
-}
-
-int  ary[1001][1001] = {0};
 
 int main(void) {
-    int t;
-    int n, m;
-    int cnt = 0;
-    int two = 0, five = 0;
-    int temp;
+    int n;
+    int cnt1 = 0, cnt2 = 0; // 2의 약수의 갯수, 5의 약수의 갯수
+    int temp, cnt;
 
     cin >> n;
-    for(int i = 2; i <= n; i++)
+    if (n <= 4)
+    {
+        printf("0");
+        return 0;
+    }
+    for (int i = n; i >= 2; i--)
     {
         temp = i;
-        while(temp % 2 == 0)
+        while (temp % 2 == 0)
         {
+            cnt1++;
             temp /= 2;
-            two++;
         }
         while (temp % 5 == 0)
         {
+            cnt2++;
             temp /= 5;
-            five++;
         }
     }
-    cnt = (two > five) ? five : two;
-    printf("%d\n", cnt);
+    cnt = min(cnt1, cnt2);
+    printf("%d", cnt);
 
     return 0;
 }
