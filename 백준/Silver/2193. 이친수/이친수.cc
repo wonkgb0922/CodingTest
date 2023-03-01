@@ -13,16 +13,16 @@ long long ary[91] = { 0, };
 
 
 int main(void){
-	long long cnt = 0;
+	int cnt = 0;
 	ary[1] = 1;
 	ary[2] = 1;
 	scanf("%d", &n);
 	if (n <= 2) printf("1");
 	else
 	{
-		for (int i = 1; i <= n-2; i++)
+		for (int i = 3; i <= n; i++)
 		{
-			ary[i+2] = ary[i + 1] + ary[i];
+			ary[i] = ary[i - 1] + ary[i - 2];
 		}
 		printf("%lld", ary[n]);
 	}
