@@ -3,39 +3,38 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <string>
+#include <cstring>
 
 #pragma warning (disable:4996)
 
 using namespace std;
 
-int ary[100001] = { 0 };
-long long S[100001] = { 0 };
-
+int n, m, ary[100000] = { 0 };
+int Sum[100000] = { 0 };
 
 int main(void) {
-	int n;
-	int t;
-	int k, l, sum = 0;
+	
+	int i, j, sum;
 
-	cin >> n;
+	scanf("%d", &n);
 	scanf("%d", &ary[0]);
-	S[0] = ary[0];
-	for (int i = 1; i < n; i++)
+	Sum[0] = ary[0];
+	for (i = 1; i < n; i++)
 	{
 		scanf("%d", &ary[i]);
-		S[i] = S[i - 1] + ary[i];
+		Sum[i] = Sum[i - 1] + ary[i];
 	}
-	cin >> t;
-	while (t--)
+	scanf("%d", &m);
+
+	while (m--)
 	{
-		scanf("%d %d", &k, &l); // k부터 l까지 사이의 합
-		if (k == 1) sum = S[l - 1];
-		else
-		{
-			sum = S[l - 1] - S[k - 2];
-		}
+		scanf("%d%d", &i, &j);
+		if(i == 1) sum = Sum[j - 1];
+		else sum = Sum[j - 1] - Sum[i - 2];
 		printf("%d\n", sum);
 	}
 
+	
 	return 0;
 }
