@@ -22,23 +22,13 @@ int main(void)
 	while ( l <= r )
 	{
 		mid = (l + r) / 2 ;
-
 		cnt = 0;
+
 		for (int i = 0; i < k; i++)
-		{
 			cnt += ary[i] / mid;
-		}
-		if (cnt < n)
-		{
-			r = mid - 1;
-		}
-		else 
-		{
-			l = mid + 1;
-		}
 
-		//printf("%d, %d, %d\n", l, mid, r);
-
+		if (cnt < n) r = mid - 1;
+		else l = mid + 1;
 	}
 	cout << r;
 	return 0;
