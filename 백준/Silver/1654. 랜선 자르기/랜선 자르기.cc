@@ -18,7 +18,7 @@ int main(void)
 		scanf("%d", ary + i);
 		if (r < ary[i]) r = ary[i];
 	}
-	int cnt, res = 0;
+	int cnt;
 	while ( l <= r )
 	{
 		mid = (l + r) / 2 ;
@@ -35,12 +35,11 @@ int main(void)
 		else 
 		{
 			l = mid + 1;
-			if (res < mid) res = mid;
 		}
 
 		//printf("%d, %d, %d\n", l, mid, r);
 
 	}
-	cout << res;
+	cout << r;
 	return 0;
 }
