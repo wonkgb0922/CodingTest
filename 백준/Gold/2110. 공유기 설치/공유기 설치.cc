@@ -29,7 +29,6 @@ int main(void)
 	{
 		mid = (l + r) / 2;
 
-		//printf("%d %d %d\n", l, mid, r);
 		sum = 0;
 		cnt = 1;
 		d = false;
@@ -38,17 +37,13 @@ int main(void)
 		{
 			if (v[i] - point >= mid)
 			{
-				
 				cnt++;
 				point = v[i];
-				
 			}
 		}
 		if (cnt >= c) l = mid + 1;
 		else r = mid - 1;
-		//printf("cnt : %d\n", cnt);
 	}
-	//printf("%d %d %d\n", l, mid, r);
 	cout << r;
 	return 0;
 }
