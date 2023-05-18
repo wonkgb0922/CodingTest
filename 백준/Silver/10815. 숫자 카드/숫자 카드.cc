@@ -1,36 +1,32 @@
-# include <iostream>
-# include <vector>
-# include <algorithm>
+#include <stdio.h>
+#include <string>
+#include <string.h>
+#include <iostream>
+#include <cmath>
+#include <vector>
+#include <algorithm>
+#include <map>
+#include <set>
 
 using namespace std;
 
-int main(void)
-{
-    vector<int> v1;
-    vector<int> v2;
-    int a, input, i;
-    cin >> a;
-    for(i=0; i<a; i++)
+int main(void){
+    int n, m, input, res;
+    set<int> s;
+    scanf("%d", &n);
+    while(n--)
     {
-        cin >> input;
-        v1.push_back(input);
+        scanf("%d", &input);
+        s.insert(input);
     }
-    sort(v1.begin(), v1.end());
-
-    cin >> a;
-    for(i=0;i<a;i++)
+    scanf("%d", &m);
+    while(m--)
     {
-        cin >> input;
-        v2.push_back(input);
+        scanf("%d", &input);
+        printf("%d ", s.count(input));
     }
+    
 
-    // 벡터에서 특정값을 찾기
-    i=0;
-    for(int &x : v2)
-    {
-        cout << binary_search(v1.begin(), v1.end(), v2[i]) << ' ';
-        i++;
-    }
-
-    return 0;
+	return 0;
+    
 }
