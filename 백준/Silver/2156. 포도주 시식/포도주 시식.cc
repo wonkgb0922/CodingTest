@@ -3,12 +3,10 @@
 #include <stdio.h>
 #include <algorithm>
 #include <vector>
-#include <memory.h>
 
 using namespace std;
 
 int dp[10001];
-
 
 int main(void)
 {
