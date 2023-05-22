@@ -9,11 +9,7 @@ using namespace std;
 int dp[10001];
 
 int main(void)
-{
-	/*ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);*/
-    
+{    
 	int  input, n, k;
     vector<int> v;
 	cin >> n >> k;
