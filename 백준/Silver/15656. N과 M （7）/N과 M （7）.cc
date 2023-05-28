@@ -3,16 +3,12 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
-#include <memory.h>
 
 using namespace std;
 
 int n, m;
-//vector<int> v;
 int v[8];
 int res[8] = { 0 };
-bool visited[8] = { false };
-
 
 void dfs(int cnt)
 {
@@ -33,15 +29,10 @@ void dfs(int cnt)
 
 int main(void)
 {
-	int input;
 	cin >> n >> m;
 	for (int i = 0; i < n; i++) {
 		scanf("%d", v + i);
-		//scanf("%d", &input);
-		//v.push_back(input);
-
 	}
-	// sort(v.begin(), v.end());
 	sort(v, v + n);
 	dfs(0);
 }
