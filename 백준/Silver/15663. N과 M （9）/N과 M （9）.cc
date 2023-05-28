@@ -3,8 +3,6 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
-#include <memory.h>
-#include <set>
 
 using namespace std;
 
@@ -12,7 +10,6 @@ int n, m, ncnt = 0;
 vector<int> v;
 int vcnt[10001] = { 0 };
 bool visited[8] = { false };
-//set<int> v;
 int res[8] = { 0 };
 
 void dfs(int cnt)
