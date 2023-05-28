@@ -3,16 +3,12 @@
 #include <stdio.h>
 #include <vector>
 #include <algorithm>
-#include <memory.h>
-#include <set>
 
 using namespace std;
 
 int n, m, ncnt = 0;
 vector<int> v;
 int vcnt[10001] = { 0 };
-bool visited[8] = { false };
-//set<int> v;
 int res[8] = { 0 };
 
 void dfs(int cnt)
@@ -27,30 +23,12 @@ void dfs(int cnt)
 	}
 	for (int i = 0; i < ncnt; i++)
 	{
-		if (!visited[i])
+		if (vcnt[v[i]] > 0)
 		{
-			if (cnt >= 1)
+			if (res[cnt-1] <= v[i] || cnt == 0)
 			{
-				if (res[cnt - 1] <= v[i])
-				{
-					res[cnt] = v[i];
-					visited[i] = true;
-					dfs(cnt + 1);
-					visited[i] = false;
-				}
-			}
-			else {
 				res[cnt] = v[i];
-				visited[i] = true;
-				dfs(cnt + 1);
-				visited[i] = false;
-			}
-		}
-		else if (cnt >= 1) {
-			if (vcnt[v[i]] > 1 && res[cnt-1] <= v[i])
-			{
 				vcnt[v[i]]--;
-				res[cnt] = v[i];
 				dfs(cnt + 1);
 				vcnt[v[i]]++;
 			}
