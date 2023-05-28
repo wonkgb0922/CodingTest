@@ -1,11 +1,5 @@
 #include <stdio.h>
-#include <cmath>
 #include <iostream>
-#include <vector>
-#include <algorithm>
-#include <queue>
-#include <map>
-#include <set>
 
 #pragma warning (disable:4996)
 
