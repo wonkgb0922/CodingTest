@@ -9,7 +9,7 @@ using namespace std;
 
 int main(void)
 {
-	int l = 1, r, mid, res, temp;
+	int l = 1, r, mid, temp;
 	int N, K;
 	long long int D, cnt = 0;
 	int ary[10000][3];
@@ -32,12 +32,7 @@ int main(void)
 				cnt += (temp - ary[i][0]) / ary[i][2] + 1;
 			}
 		}
-		//printf("%d %d %d, cnt : %d\n", l, mid, r, cnt);
-		if (cnt >= D)
-		{
-			r = mid - 1;
-			res = mid;
-		}
+		if (cnt >= D) r = mid - 1;
 		else l = mid + 1;
 	}
 	cout << l;
