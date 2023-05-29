@@ -40,6 +40,6 @@ int main(void)
 		}
 		else l = mid + 1;
 	}
-	cout << res;
+	cout << l;
 	return 0;
 }
