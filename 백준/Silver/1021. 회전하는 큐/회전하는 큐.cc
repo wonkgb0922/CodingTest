@@ -16,13 +16,11 @@ int main()
 
 	cin >> n >> m;
 	for (int i = 0; i < m; i++)
-	{
 		scanf("%d", &ary[i]);
-	}
+
 	for (int i = 0; i < n; i++)
-	{
 		dq.push_back(i + 1);
-	}
+
 	for(int i = 0; i < m ; i++)
 	{
 		lcnt = 0;
