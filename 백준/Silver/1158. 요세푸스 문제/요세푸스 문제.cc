@@ -13,9 +13,8 @@ int main()
 	cin >> n >> k;
 	vector<int> v, res;
 	for (i = 0; i < n; i++)
-	{
 		v.push_back(i + 1);
-	}
+    
 	i = 0;
 	while (!v.empty())
 	{
