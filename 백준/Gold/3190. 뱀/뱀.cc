@@ -60,27 +60,14 @@ int main()
 				break;
 			}
 			else if (map[temp2.first][temp2.second] == 2)	// 사과다?
-			{
-				
-			}
+			{}
 			else
 			{
-
 				map[temp.first][temp.second] = 0;
 				snake.pop_front();
 			}
 			map[temp2.first][temp2.second] = 1;
 			snake.push_back(temp2);
-			/*printf("\n <<<<< %d초 뒤. >>>>> \n", cnt);
-			for (int i = 0; i <= n + 1; i++)
-			{
-				for (int j = 0; j <= n + 1; j++)
-				{
-					printf("%3d", map[i][j]);
-				}
-				printf("\n");
-			}
-			printf("\n");*/
 		}
 		if (f.second == 'D') state = (state + 1) % 4;
 		else
@@ -88,7 +75,6 @@ int main()
 			state--;
 			if (state < 0) state = 3;
 		}
-		//printf("state : %c, %d\n\n", f.second, state);
 		if (end) break;
 		task.pop();
 	}
@@ -110,13 +96,9 @@ int main()
 
 			if (temp2.first <= 0 || temp2.second <= 0 || temp2.first > n || temp2.second > n
 				|| map[temp2.first][temp2.second] == 1)	// 벽 혹은 몸통에 부딫혔다?
-			{
 				break;
-			}
 			else if (map[temp2.first][temp2.second] == 2)	// 사과다?
-			{
-				
-			}
+			{}
 			else
 			{
 				map[temp.first][temp.second] = 0;
@@ -124,16 +106,6 @@ int main()
 			}
 			map[temp2.first][temp2.second] = 1;
 			snake.push_back(temp2);
-			/*printf("\n <<<<< while밖 %d초 뒤. >>>>> \n", cnt);
-			for (int i = 0; i <= n + 1; i++)
-			{
-				for (int j = 0; j <= n + 1; j++)
-				{
-					printf("%3d", map[i][j]);
-				}
-				printf("\n");
-			}
-			printf("\n");*/
 		}
 	}
 	cout << cnt;
