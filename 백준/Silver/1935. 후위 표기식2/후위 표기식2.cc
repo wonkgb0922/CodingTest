@@ -3,7 +3,6 @@
 #include <iostream>
 #include <algorithm>
 #include <stack>
-#include <vector>
 
 using namespace std;
 
@@ -12,7 +11,7 @@ int main()
 	stack<double> s;
 	double ary[27] = { 0 };
 	int n;
-	double res = 0, par1, par2;
+	double par1, par2;
 	string in;
 
 	cin >> n;
