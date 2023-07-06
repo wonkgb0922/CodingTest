@@ -6,15 +6,6 @@
 
 using namespace std;
 
-struct cmp
-{
-	bool operator()(const pair<int, int>& p1, const pair<int, int>& p2)
-	{
-		if (p1.first == p2.first) return p1.second > p2.second;
-		return p1.first < p2.first;
-	}
-};
-
 int main()
 {
 	int t, n, m, in, cnt, max;
@@ -35,16 +26,13 @@ int main()
 		}
 		while (!q.empty())
 		{
-			int idx = q.front().first;
-			int value = q.front().second;
-			q.pop();
-
-			if (q2.top() == value) {
+			if (q2.top() == q.front().second) {
 				cnt++;
 				q2.pop();
-				if (idx == m) break;
+				if (q.front().first == m) break;
 			}
-			else q.push({ idx, value });
+			else q.push({ q.front().first, q.front().second});
+			q.pop();
 		}
 		printf("%d\n", cnt);
 		q = queue<pair<int,int>>();
