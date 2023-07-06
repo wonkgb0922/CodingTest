@@ -13,7 +13,7 @@ int main()
 	string in;
 	queue<int> q[21];
 	cin >> n >> k;
-	for (int i = 1; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		cin >> in;
 		len = in.length();
