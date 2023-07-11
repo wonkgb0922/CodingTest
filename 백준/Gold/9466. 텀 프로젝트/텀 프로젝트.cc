@@ -5,34 +5,29 @@
 #include <vector>
 using namespace std;
 
-bool visited[100001] = { false, };
-bool finished[100001] = { false, };
+bool visited[100001] = { false, }, finished[100001] = { false, };
 int map[100001] = { 0, };
-int cntary[100001] = { 0, };
-int cnt, n, res;
+int cnt, n;
 
 void dfs(int k) {
 	if (k == map[k]) {
 		if (!visited[k]) {
 			visited[k] = true;
 			finished[k] = true;
-			res++;
+			cnt++;
 		}
 		return;
 	}
-	cntary[k] = cnt;
-	cnt++;
 	visited[k] = true;
 	if (!visited[map[k]]) {
 		dfs(map[k]);
 	}
 	else {
 		if (!finished[map[k]]) {
-			//cout << cntary[k] << " " << cntary[map[k]] << endl;
-			res += cntary[k] + 1 - cntary[map[k]];
+			for (int it = map[k]; it != k; it = map[it]) cnt++;
+			cnt++;
 		}
 	}
-
 	finished[k] = true;
 }
 
@@ -43,7 +38,7 @@ int main()
 
 	while (t--) {
 		scanf("%d", &n);
-		res = 0;
+		cnt = 0;
 		fill_n(visited, n + 1, 0);
 		fill_n(finished, n + 1, 0);
 		for (int i = 1; i <= n; i++) {
@@ -51,11 +46,10 @@ int main()
 		}
 		for (int i = 1; i <= n; i++) {
 			if (!visited[i]) {
-				cnt = 0;
 				dfs(i);
 			}
 		}
-		printf("%d\n", n - res);
+		printf("%d\n", n - cnt);
 	}
 
 	return 0;
