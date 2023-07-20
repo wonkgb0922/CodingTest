@@ -64,9 +64,7 @@ int main(void)
 {
 	cin >> n >> m;
 	for (int i = 0; i < n; i++)
-	{
 		cin >> ary[i];
-	}
 	printf("%d", bfs());
 	return 0;
 }
