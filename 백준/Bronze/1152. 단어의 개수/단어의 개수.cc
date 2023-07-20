@@ -2,9 +2,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <map>
-#include <queue>
-#include <memory.h>
 
 using namespace std;
 
