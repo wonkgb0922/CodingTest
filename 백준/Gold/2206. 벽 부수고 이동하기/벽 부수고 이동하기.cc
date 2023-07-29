@@ -19,7 +19,6 @@ int main()
 	for (int i = 0; i < n; i++)
 		cin >> ary[i];
 	q.push({ { 0,0 }, 1 });
-	visited[0][0][0] = 1;
 	visited[1][0][0] = 1;
 	while (!q.empty()) {
 		f = q.front().first.first;
