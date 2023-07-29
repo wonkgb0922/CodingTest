@@ -14,7 +14,6 @@ const short dir[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };
 int main()
 {
 	int n, m, res = -1;
-	bool solve = false;
 	short f, s, isValid, nextF, nextS;
 	cin >> n >> m;
 	for (int i = 0; i < n; i++)
@@ -35,12 +34,10 @@ int main()
 			nextF = f + dir[i][0];
 			nextS = s + dir[i][1];
 			if (nextF >= 0 && nextF < n && nextS >= 0 && nextS < m) {
-				//다음 칸이 벽이고 뚫을 수 있을 때
 				if (ary[nextF][nextS] == '1' && isValid == 1) {
 					q.push({ {nextF,nextS}, 0 });
 					visited[isValid - 1][nextF][nextS] = visited[isValid][f][s] + 1;
 				}
-				//다음 칸이 0이고 방문하지 않았을 때
 				else if (ary[nextF][nextS] == '0' && visited[isValid][nextF][nextS] == 0) {
 					q.push({ {nextF,nextS},isValid });
 					visited[isValid][nextF][nextS] = visited[isValid][f][s] + 1;
