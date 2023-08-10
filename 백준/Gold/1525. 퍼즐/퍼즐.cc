@@ -38,12 +38,13 @@ int main()
 		for (int i = 0; i < 4; i++) {
 			nx = posx + dir[i][1];
 			ny = posy + dir[i][0];
-			if (nx < 0 || nx > 2|| ny < 0 || ny > 2)  continue;
-			next = temp;
-			swap(next[pos], next[ny * 3 + nx]);			
-			if (visited.find(next) == visited.end()) {
-				visited.insert(next);
-				q.push({ next, count + 1 });
+			if (nx >= 0 && nx <= 2 && ny >= 0 && ny <= 2) {
+				next = temp;
+				swap(next[pos], next[ny * 3 + nx]);
+				if (visited.find(next) == visited.end()) {
+					visited.insert(next);
+					q.push({ next, count + 1 });
+				}
 			}
 		}
 	}
