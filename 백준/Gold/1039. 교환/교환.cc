@@ -8,7 +8,6 @@
 using namespace std;
 
 queue<int> q;
-//set<string> visited;
 bool visited[1000001] = { false, };
 int main()
 {
@@ -27,7 +26,6 @@ int main()
 		qsize = q.size();
 		k--;
 		if (!qsize) break;
-		//visited = set<string>();
 		fill(visited, visited + 1000001, false);
 		while (qsize--) {
 			in = q.front();
@@ -38,7 +36,6 @@ int main()
 				for (int j = i + 1; j < length; j++) {
 					vali = (in / pi) % 10;
 					valj = (in / pj) % 10;
-					//printf("valj : %d, i : %d, pi: %d, length : %d\n", valj, i, pi, length);
 					if (vali == 0 && j == length - 1) continue;
 					next = in;
 					next -= vali * pi;
