@@ -10,11 +10,8 @@ using namespace std;
 
 int hashing(string in) {
 	unsigned long long int hash = 0;
-	for (int i = 0; i < in.length(); i++) {
+	for (int i = 0; i < in.length(); i++)
 		hash += (in[i] - 96) * pow(27, (in.length() - i - 1));
-	}
-	//cout << in;
-	//printf("의 해시값 : %d\n", hash % 7919);
 	return hash % 7919;
 }
 int main()
@@ -32,8 +29,6 @@ int main()
 			hash = hashing(in);
 			auto it = v.equal_range(hash);
 			if (it.first != v.end()) {
-				//cout << "in : " << in << endl;
-				//cout << "it-> : " << it->second << endl;
 				for (auto r = it.first; r != it.second; r++) {
 					if (r->second == in) {
 						sol = false;
@@ -48,8 +43,8 @@ int main()
 		if (sol) {
 			hash = hashing(in);
 			v.insert({ hash, in });
-		}		
-	}	
+		}
+	}
 	cout << v.size();
 
 	return 0;
