@@ -16,19 +16,14 @@ int tempi = 0;
 
 void ex(int m)
 {
-    if (m == rep)
-    {
+    if (m == rep) {
         for (int i = 0; i < rep; i++)
-        {
-            //printf("%d ", ary[i]);
             sum += ary[i];
-        }
         if (sum == s) cnt++;
         sum = 0;
         return;
     }
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         if (!visited[i] && tempi <= i)
         {
             tempi = i;
@@ -45,13 +40,11 @@ int main(void) {
     int input;
 
     cin >> n >> s;
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> input;
         v.push_back(input);
     }
-    for (int i = 1; i <= n; i++)
-    {
+    for (int i = 1; i <= n; i++) {
         rep = i;
         ex(0);
     }
