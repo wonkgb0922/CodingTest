@@ -10,10 +10,9 @@ int n, cnt = 0;
 
 bool valid(int idx, int val) {
 	for (int i = 0; i < n; i++) {
-		if (ary[i] != 0) {
+		if (ary[i] != 0)
 			if (max(idx - i, i - idx) == max(val - ary[i], ary[i] - val))
 				return false;
-		}
 	}
 	return true;
 }
@@ -21,9 +20,7 @@ bool valid(int idx, int val) {
 void dfs(int idx, int val) {
 	ary[idx] = val;
 
-	if (val == n) {
-		cnt++;
-	}
+	if (val == n) cnt++;
 	for (int i = 0; i < n; i++) {
 		if (ary[i] == 0 && valid(i, val + 1))
 			dfs(i, val + 1);
@@ -34,9 +31,8 @@ void dfs(int idx, int val) {
 int main()
 {
 	cin >> n;
-	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++)
 		dfs(i, 1);
-	}
 	printf("%d", cnt);
 	return 0;
 }
