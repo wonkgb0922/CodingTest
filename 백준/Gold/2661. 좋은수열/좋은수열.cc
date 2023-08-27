@@ -2,13 +2,10 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <string>
 
 using namespace std;
 
-bool used[51] = { false, };
-int res[50];
-int n;
+int res[50], n;
 
 bool valid(int idx) {
 	if (idx == 0) return true;
@@ -36,7 +33,7 @@ bool dfs(int idx, int val) {
 		else if (dfs(idx + 1, 3)) return true;
 		else return false;
 	}
-	else return false;
+	return false;
 }
 
 int main()
