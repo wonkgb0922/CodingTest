@@ -20,7 +20,6 @@ void dfs(int idx, int val) {
 	for (int i = 1; i <= n; i++)
 		dfs(idx + 1, i);
 	used[val] = false;
-	
 }
 
 int main()
