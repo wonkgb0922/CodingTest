@@ -14,28 +14,26 @@ bool valid(int idx, int size) {
 	int y = idx / 10, x = idx % 10;
 	if (x + size > 10 || y + size > 10) return false;
 	if (pcnt[size - 1] >= 5) return false;
-	for (int i = y; i < y + size; i++) {
+	for (int i = y; i < y + size; i++)
 		for (int j = x; j < x + size; j++)
 			if (ary[i][j] == 0 || visited[i][j]) return false;
-	}
 	return true;
 }
+
 void usePaper(int idx, int size) {
 	int y = idx / 10, x = idx % 10;
 	pcnt[size - 1]++;
-	for (int i = y; i < y + size; i++) {
+	for (int i = y; i < y + size; i++)
 		for (int j = x; j < x + size; j++)
 			visited[i][j] = true;
-	}
 }
 
 void unusedPaper(int idx, int size) {
 	int y = idx / 10, x = idx % 10;
 	pcnt[size - 1]--;
-	for (int i = y; i < y + size; i++) {
+	for (int i = y; i < y + size; i++)
 		for (int j = x; j < x + size; j++)
 			visited[i][j] = false;
-	}
 }
 
 void dfs(int idx, int fcnt) {
@@ -43,9 +41,7 @@ void dfs(int idx, int fcnt) {
 	if (fcnt >= cnt) return;
 	if (idx == 99) {
 		if (!visited[y][x] && ary[y][x] == 1) {
-			if (valid(idx, 1)) {
-				fcnt++;
-			}
+			if (valid(idx, 1)) fcnt++;
 			else return;
 		}
 		if (cnt > fcnt) cnt = fcnt;
@@ -64,14 +60,12 @@ void dfs(int idx, int fcnt) {
 	}
 }
 
-
 int main()
 
 {
 	for (int i = 0; i < 10; i++)
 		for (int j = 0; j < 10; j++)
 			scanf("%d", &ary[i][j]);
-
 	dfs(0, 0);
 	if (res) printf("%d", cnt);
 	else printf("-1");
