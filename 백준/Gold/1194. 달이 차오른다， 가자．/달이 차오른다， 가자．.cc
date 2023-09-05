@@ -56,10 +56,8 @@ int main(void)
 						visited[nexty][nextx][nextkey] = true;
 						q.push({ {nextx, nexty}, nextkey });
 					}
-					
 				}
 			}
-			
 		}
 		if (sol) break;
 	}
