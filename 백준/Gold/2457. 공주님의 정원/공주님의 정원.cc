@@ -8,15 +8,9 @@ int ary[1232] = { 0, };
 
 int main(void)
 {
-	int n;
+	int n, fmonth, fday, emonth, eday;
+	int cnt = 0, fdate = 301, edate = 1130, temp = 301;
 	bool d = false;
-
-	int fmonth, fday;
-	int emonth, eday;
-
-	int month = 3, day = 1, cnt = 0;
-	int fdate = 301, edate = 1130;
-	int temp = 301;
 
 	cin >> n;
 
@@ -25,7 +19,7 @@ int main(void)
 		int index = fmonth * 100 + fday;
 		int value = emonth * 100 + eday;
 
-		if (ary[index]  < value) ary[index] = value;
+		if (ary[index] < value) ary[index] = value;
 	}
 
 	for (int i = 0; i < 1232; i++) {
