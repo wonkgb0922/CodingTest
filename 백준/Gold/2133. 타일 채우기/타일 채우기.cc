@@ -17,21 +17,16 @@ int sol(int idx, int state) {
 	if (dp[idx][state] != -1) return dp[idx][state];
 	int& res = dp[idx][state];
 	res = 0;
-	if (state == 0) {
+	if (state == 0)
 		res = sol(idx + 2, 0) + sol(idx + 1, 4) + sol(idx + 1, 1);
-	}
-	else if (state == 4) {
+	else if (state == 4)
 		res = sol(idx + 1, 0) + sol(idx + 1, 3);
-	}
-	else if (state == 3) {
+	else if (state == 3)
 		res = sol(idx + 1, 4);
-	}
-	else if (state == 1) {
+	else if (state == 1)
 		res = sol(idx + 1, 0) + sol(idx + 1, 6);
-	}
-	else if (state == 6) {
+	else if (state == 6)
 		res = sol(idx + 1, 1);
-	}
 	return res;
 }
 
