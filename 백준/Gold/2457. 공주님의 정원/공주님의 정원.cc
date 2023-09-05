@@ -8,8 +8,7 @@ int ary[1232] = { 0, };
 
 int main(void)
 {
-	int n, fmonth, fday, emonth, eday;
-	int cnt = 0, fdate = 301, edate = 1130, temp = 301;
+	int n, fmonth, fday, emonth, eday, cnt = 0, fdate = 301, edate = 1130, temp = 301;
 	bool d = false;
 
 	cin >> n;
@@ -39,9 +38,7 @@ int main(void)
 			if (temp >= fdate) {
 				fdate = temp;
 				cnt++;
-				if (i <= fdate) {
-					temp = ary[i];
-				}
+				if (i <= fdate) temp = ary[i];
 			}
 			else break;
 		}
