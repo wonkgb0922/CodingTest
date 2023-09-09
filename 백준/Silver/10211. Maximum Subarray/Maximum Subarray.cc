@@ -19,7 +19,7 @@ int main(void) {
 		}
 		for (int i = 0; i < n; i++) {
 			for (int j = i + 1; j <= n; j++)
-				if(res < S[j] - S[i]) res = S[j] - S[i];
+				res = max(res, S[j] - S[i]);
 		}
 		printf("%d\n", res);
 	}
