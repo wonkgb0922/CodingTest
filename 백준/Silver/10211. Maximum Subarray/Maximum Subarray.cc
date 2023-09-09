@@ -4,14 +4,14 @@
 
 using namespace std;
 
-long long int S[1001] = { 0, };
+int S[1001] = { 0, };
 
 int main(void) {
 	int t, n, in;
 
 	cin >> t;
 	while (t--) {
-		long long int res = -999;
+		int res = -999;
 		scanf("%d", &n);
 		for (int i = 1; i <= n; i++) {
 			scanf("%d", &in);
@@ -21,7 +21,7 @@ int main(void) {
 			for (int j = i + 1; j <= n; j++)
 				if(res < S[j] - S[i]) res = S[j] - S[i];
 		}
-		printf("%lld\n", res);
+		printf("%d\n", res);
 	}
 	return 0;
 }
