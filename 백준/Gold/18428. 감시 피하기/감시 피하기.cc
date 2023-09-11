@@ -46,9 +46,8 @@ bool dfs(int pos, int cnt) {
 		return false;
 	}
 	for (int i = 1; i + pos < n * n; i++) {
-		if (ary[(pos + i) / n][(pos + i) % n] == 'X') {
+		if (ary[(pos + i) / n][(pos + i) % n] == 'X')
 			if (dfs(pos + i, cnt + 1)) return true;
-		}
 	}
 	ary[y][x] = 'X';
 	return false;
