@@ -1,7 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
-#include <vector>
 using namespace std;
 
 char ary[6][6];
@@ -66,10 +65,8 @@ int main(void) {
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			if (ary[i][j] == 'X') {
-				if (dfs(i * n + j, 0)) {
-					res = true;
-					break;
-				}
+                res = dfs(i * n + j, 0);
+				if (res) break;
 			}
 		}
 		if (res) break;
