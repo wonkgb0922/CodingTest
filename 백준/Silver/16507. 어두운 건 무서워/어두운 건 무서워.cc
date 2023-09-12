@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
-#include <vector>
+
 using namespace std;
 
-int S[1001][1001] = {0, };
+int S[1001][1001] = { 0, };
 
 int main(void) {
 	int r, c, q, in;
@@ -19,8 +19,11 @@ int main(void) {
 	while (q--) {
 		scanf("%d%d%d%d", &r1, &c1, &r2, &c2);
 		res = 0;
-		for (int i = r1 - 1; i <= r2 - 1; i++)
+		r1--;
+		r2--;
+		for (int i = r1; i <= r2; i++)
 			res += (S[i][c2] - S[i][c1 - 1]);
-		printf("%d\n", res/ ((r2 - r1 + 1) * (c2 - c1 + 1)));
+		printf("%d\n", res / ((r2 - r1 + 1) * (c2 - c1 + 1)));
 	}
+	return 0;
 }
