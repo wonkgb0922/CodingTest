@@ -9,13 +9,7 @@ int main()
 	int h, m, in, temp;
 	cin >> h >> m;
 	cin >> in;
-	m += in;
-	if (m >= 60) {
-		temp = m / 60;
-		m %= 60;
-		h += temp;
-		if (h >= 24) h -= 24;
-	}
-	printf("%d %d", h, m);
+	
+	printf("%d %d", (h+(m+in)/60)%24, (m+in)%60);
 	return 0;
 }
