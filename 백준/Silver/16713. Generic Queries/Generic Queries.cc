@@ -4,11 +4,11 @@
 
 using namespace std;
 
-long long S[1000001] = { 0, };
+int S[1000001] = { 0, };
 
 int main(void) {
 	int n, q, in, in2;
-	long long res = 0;
+	int res = 0;
 	cin >> n >> q;
 	for (int i = 1; i <= n; i++) {
 		scanf("%d", &in);
@@ -18,6 +18,6 @@ int main(void) {
 		scanf("%d%d", &in, &in2);
 		res ^= S[in2] ^ S[in - 1];
 	}
-	printf("%lld", res);
+	printf("%d", res);
 	return 0;
 }
