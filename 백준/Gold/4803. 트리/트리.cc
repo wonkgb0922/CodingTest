@@ -9,13 +9,9 @@
 using namespace std;
 
 multimap<int, int> mm;
-
 bool visited[501] = { false, };
 int n;
-vector<int> v;
 bool dfs(int idx, int prev) {
-	v.push_back(idx);
-	bool ret = false;
 	visited[idx] = true;
 	auto rg = mm.equal_range(idx);
 	for (auto& it = rg.first; it != rg.second; it++) {
