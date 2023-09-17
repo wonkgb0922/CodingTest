@@ -3,7 +3,6 @@
 #include <iostream>
 #include <algorithm>
 #include <map>
-#include <memory.h>
 
 using namespace std;
 
@@ -21,12 +20,10 @@ int dfs(int idx, int prev) {
 	int sum = 0;
 	auto rg = mm.equal_range(idx);
 	
-	
 	if (rg.first == rg.second) return 1;
 	for (auto& it = rg.first; it != rg.second; it++) {
 		sum += dfs(it->second, idx);
 	}
-	
 	return sum;
 }
 
