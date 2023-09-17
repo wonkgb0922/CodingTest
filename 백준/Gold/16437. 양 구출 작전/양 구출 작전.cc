@@ -8,12 +8,11 @@ using namespace std;
 
 int n;
 multimap<int, int> mm;
-bool isSheep[123456] = { false, }, visited[123456] = { false, };
+bool isSheep[123456] = { false, };
 int cnt[123456];
 
 
 long long int dfs(int idx) {
-	visited[idx] = true;
 	long long int sum = 0;
 	auto rg = mm.equal_range(idx);
 	
@@ -22,7 +21,7 @@ long long int dfs(int idx) {
 		return 0;
 	}
 	for (auto& it = rg.first; it != rg.second; it++) {
-		if(!visited[it->second]) sum += dfs(it->second);
+		sum += dfs(it->second);
 	}
 	sum += cnt[idx];
 	if (sum < 0) sum = 0;
@@ -42,7 +41,6 @@ int main() {
 		else cnt[i] = -in2;
 		
 		mm.insert({ in3 - 1, i});
-		mm.insert({ i,in3 - 1 });
 	}
 	cout << dfs(0);
 	return 0;
