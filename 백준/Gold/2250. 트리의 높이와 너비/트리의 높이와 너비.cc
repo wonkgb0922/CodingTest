@@ -38,7 +38,6 @@ int main() {
 		if (go) break;
 	}
 	dfs(root, 1);
-	//printf("%d\n", s);
 	for (int i = 1; i <= s; i++) {
 		in1 = L[i];
 		in2 = R[i];
@@ -47,7 +46,6 @@ int main() {
 			res1 = i;
 		}
 	}
-	
 	cout << res1 << " " << res2;
 	return 0;
 }
