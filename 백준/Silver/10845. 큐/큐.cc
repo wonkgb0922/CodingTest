@@ -8,26 +8,20 @@ using namespace std;
 
 int main()
 {
-	int n;
+	int n, in2;
 	string in1;
-	int in2;
 	queue<int> q;
 
 	cin >> n;
-
-	while (n--)
-	{
+	while (n--) {
 		cin >> in1;
-		if (in1 == "push")
-		{
+		if (in1 == "push") {
 			cin >> in2;
 			q.push(in2);
 		}
-		else if (in1 == "pop")
-		{
+		else if (in1 == "pop") {
 			if (q.empty()) cout << -1 << '\n';
-			else
-			{
+			else {
 				cout << q.front() << '\n';
 				q.pop();
 			}
@@ -36,13 +30,11 @@ int main()
 			cout << q.size() << '\n';
 		else if (in1 == "empty")
 			cout << q.empty() << '\n';
-		else if (in1 == "front")
-		{
+		else if (in1 == "front") {
 			if (q.empty()) cout << -1 << '\n';
 			else cout << q.front() << '\n';
 		}
-		else if (in1 == "back")
-		{
+		else if (in1 == "back") {
 			if (q.empty()) cout << -1 << '\n';
 			else cout << q.back() << '\n';
 		}
