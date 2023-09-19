@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <set>
 using namespace std;
 
 int main(void) {
