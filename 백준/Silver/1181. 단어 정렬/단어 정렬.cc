@@ -1,52 +1,34 @@
-/*
-	1181번
-	단어 정렬
-*/
-
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
-#include <cmath>
-#include <vector>
 #include <algorithm>
-
+#include <set>
 using namespace std;
 
-bool comp(const string a, const string b)
-{
-	if (a.size() == b.size()) return a < b;
-	return a.size() < b.size();
-}
+struct Comp {
+public:
+	bool operator () (const string& a, const string& b) const {
+		if (a.length() == b.length()) return a < b;
+		else return a.length() < b.length();
+	}
+};
 
-int main(void)
-{
+set<string, Comp> s;
+
+int main(void) {
 	int n;
-	bool d = false;
-	string s;
-	vector<string> v;
+	bool d;
+	string in;
 
 	cin >> n;
-
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		d = false;
-		cin >> s;
-		for (auto& x : v)
-		{
-			if (x == s)
-			{
-				d = true;
-				break;
-			}
-		}
-		if (d) continue;
-		v.push_back(s);
+		cin >> in;
+		s.insert(in);
 	}
-	sort(v.begin(), v.end(), comp);
 
-	for (auto& x : v)
-	{
-		cout << x << "\n";
-	}
+	for (auto& it : s)
+		cout << it << "\n";
 	return 0;
 
 }
