@@ -4,7 +4,7 @@
 #include <algorithm>
 using namespace std;
 
-int ary[100001] = { 0, };
+int ary[100001];
 int ary2[100000];
 
 int main() {
@@ -14,9 +14,9 @@ int main() {
 		scanf("%d", &in);
 		ary[in]++;
 	}
-	for (int i = 0; i < n; i++) {
-		scanf("%d", ary2 + i);		
-	}
+	for (int i = 0; i < n; i++)
+		scanf("%d", ary2 + i);	
+
 	sort(ary2, ary2 + n, greater<int>());
 	for (int i = 0; i < n; i++) {
 		for (int j = ary2[i] - 1; j >= 0; j--) {
