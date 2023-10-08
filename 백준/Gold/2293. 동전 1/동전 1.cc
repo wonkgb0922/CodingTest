@@ -6,18 +6,24 @@
 
 using namespace std;
 
-int dp[10001];
+int dp[10001], n;
+vector<int> v;
 
 int main(void)
-{    
-	int  input, n, k;
-    vector<int> v;
+{
+	/*ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);*/
+
+	int  input, k;
 	cin >> n >> k;
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &input);
 		v.push_back(input);
 	}
+	//sort(v.begin(), v.end(), greater<int>());
+	//sort(v.begin(), v.end());
 	dp[0] = 1;
 	for (int i = 0; i < n; i++)
 	{
