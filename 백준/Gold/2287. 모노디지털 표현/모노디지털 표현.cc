@@ -1,13 +1,11 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <queue>
 #include <set>
 
 using namespace std;
 
 int k;
-
 set<int> s[8];
 
 set<int>& sol(int n) {
@@ -45,12 +43,11 @@ int main()
 {
 	int t, n;
 	scanf("%d%d", &k, &t);
-	sol(7);
 	while (t--) {
 		bool d = false;
 		scanf("%d", &n);
 		for (int i = 0; i < 8; i++) {
-			if (s[i].find(n) != s[i].end()) {
+			if (sol(i).find(n) != sol(i).end()) {
 				printf("%d\n", i + 1);
 				d = true;
 				break;
