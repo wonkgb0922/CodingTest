@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <queue>
 #include <set>
 
@@ -9,16 +8,13 @@ using namespace std;
 
 struct Pred {
 	bool operator() (pair<int, int> p1, pair<int, int> p2) {
-		if (p1.second == p2.second) {
-			return p1.first > p2.first;
-		}
 		return p1.second < p2.second;
 	}
 };
 
 int main()
 {
-	int n, k, in, in2, val = 0;
+	int n, k, in, in2;
 	long long res = 0;
 	priority_queue<pair<int, int>, vector<pair<int, int>>, Pred> q;
 	multiset<int> s;
@@ -31,7 +27,7 @@ int main()
 		scanf("%d", &in);
 		s.insert(in);
 	}
-	while (!q.empty()) {
+	while (!q.empty() && !s.empty()) {
 		auto& temp = q.top();
 		auto iter = s.lower_bound(temp.first);
 		if (iter != s.end()) {
