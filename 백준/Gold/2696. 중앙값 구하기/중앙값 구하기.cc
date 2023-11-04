@@ -53,10 +53,8 @@ int main()
 					}
 				}
 			}
-
-			if (i % 2) {
+			if (i % 2)
 				res.push_back(root);
-			}
 		}
 		printf("%d\n", res.size());
 		for (int i = 0; i < res.size(); i++) {
