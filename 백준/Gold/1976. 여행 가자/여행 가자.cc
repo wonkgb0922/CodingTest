@@ -25,21 +25,19 @@ int main()
 {
 	int n, m, in, res = -1;
 	scanf("%d%d", &n, &m);
-	memset(p, -1, sizeof(int)*n);
+	memset(p, -1, sizeof(int) * n);
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
 			scanf("%d", &in);
-			if (in) {
+			if (in)
 				merge(i, j);
-			}
 		}
 	}
 	while (m--) {
 		scanf("%d", &in);
-		if (res == -1) {
+		if (res == -1)
 			res = find(in - 1);
-		}
 		else {
 			if (res != find(in - 1)) {
 				printf("NO\n");
