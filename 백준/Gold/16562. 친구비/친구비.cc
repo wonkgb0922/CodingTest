@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <memory.h>
 
 using namespace std;
 
