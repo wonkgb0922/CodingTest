@@ -27,7 +27,7 @@ int main()
 	int n, m, k, in, in2, res = 0;
 
 	scanf("%d%d%d", &n, &m, &k);
-;	for (int i = 0; i < n; i++) {
+	for (int i = 0; i < n; i++) {
 		scanf("%d", &in);
 		p[i] = -in;
 	}
