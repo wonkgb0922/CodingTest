@@ -40,7 +40,7 @@ int main()
 			res = find(in - 1);
 		else {
 			if (res != find(in - 1)) {
-				printf("NO\n");
+				printf("NO");
 				return 0;
 			}
 		}
