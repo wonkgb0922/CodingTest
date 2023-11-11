@@ -39,7 +39,7 @@ int main()
 						q1.pop();
 						q1.push(in);
 					}
-					else if (root >= in) {
+					else if (root > in) {
 						q2.push(root);
 						root = in;
 					}
