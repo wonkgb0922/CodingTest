@@ -31,7 +31,6 @@ void merge(int a, int b) {
 int main()
 {
 	int n, m, tcnt, pos, in, cnt = 0;
-	bool d;
 	vector<int> v;
 	memset(p, -1, sizeof(p));
 	scanf("%d%d", &n, &m);
@@ -41,7 +40,6 @@ int main()
 		merge(0, in);
 	}
 	for (int i = 0; i < m; i++) {
-		d = false;
 		scanf("%d%d", &tcnt, &pos);
 		for (int j = 1; j < tcnt; j++) {
 			scanf("%d", &in);
