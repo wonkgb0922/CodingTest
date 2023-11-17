@@ -6,7 +6,7 @@
 using namespace std;
 
 int dir[4][2] = { {1,0},{-1,0},{0,1},{0,-1} };
-int p[2250001], r, c;
+int p[2250000], r, c;
 bool visited[1500][1500];
 string map[1500];
 queue<int> q;
