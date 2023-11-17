@@ -79,8 +79,7 @@ int main()
 		while (qsize--) {
 			auto& t = q.front();
 			int cx = t % c, cy = t / c;
-			if (map[cy][cx] != '.') {
-				map[cy][cx] = '.';
+			map[cy][cx] = '.';
 				for (int i = 0; i < 4; i++) {
 					nx = cx + dir[i][0];
 					ny = cy + dir[i][1];
@@ -90,11 +89,11 @@ int main()
 							merge(t, nt);
 						}
 						else if(!visited[ny][nx]) {
+							visited[ny][nx] = true;
 							q.push(nt);
 						}
 					}
 				}
-			}
 			
 			q.pop();
 		}
