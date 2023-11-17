@@ -67,9 +67,8 @@ int main()
 	nearbyWater(Lpos2);
 	for (int i = 0; i < r; i++) {
 		for (int j = 0; j < c; j++) {
-			if (map[i][j] == '.') {
+			if (map[i][j] == '.')
 				nearbyWater(i * c + j);
-			}
 		}
 	}
 	while (!q.empty()) {
@@ -80,21 +79,19 @@ int main()
 			auto& t = q.front();
 			int cx = t % c, cy = t / c;
 			map[cy][cx] = '.';
-				for (int i = 0; i < 4; i++) {
-					nx = cx + dir[i][0];
-					ny = cy + dir[i][1];
-					nt = ny * c + nx;
-					if (nx >= 0 && nx < c && ny >= 0 && ny < r) {
-						if (map[ny][nx] == '.' || map[ny][nx] == 'L') {
-							merge(t, nt);
-						}
-						else if(!visited[ny][nx]) {
-							visited[ny][nx] = true;
-							q.push(nt);
-						}
+			for (int i = 0; i < 4; i++) {
+				nx = cx + dir[i][0];
+				ny = cy + dir[i][1];
+				nt = ny * c + nx;
+				if (nx >= 0 && nx < c && ny >= 0 && ny < r) {
+					if (map[ny][nx] == '.' || map[ny][nx] == 'L')
+						merge(t, nt);
+					else if (!visited[ny][nx]) {
+						visited[ny][nx] = true;
+						q.push(nt);
 					}
 				}
-			
+			}
 			q.pop();
 		}
 	}
