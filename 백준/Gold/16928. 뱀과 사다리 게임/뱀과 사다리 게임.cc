@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
@@ -63,7 +62,6 @@ int main()
 		if (sol)break;
 	}
 	cout << level;
-
 
 	return 0;
 }
