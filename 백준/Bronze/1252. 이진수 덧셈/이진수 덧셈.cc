@@ -7,14 +7,14 @@ using namespace std;
 int main()
 {
 	string a, b, c;
-	int carry = 0, a1, b1, c1;
+	int carry = 0, a1, b1, c1, i;
 	cin >> a >> b;
 	if (a.length() < b.length()) swap(a, b);
 
 	reverse(a.begin(), a.end());
 	reverse(b.begin(), b.end());
 
-	for (int i = 0; i < a.length(); i++) {
+	for (i = 0; i < a.length(); i++) {
 		a1 = a[i] - '0';
 		if (i < b.length()) {
 			b1 = b[i] - '0';
@@ -38,7 +38,8 @@ int main()
 	}
 	if (carry) c.push_back('1');
 	reverse(c.begin(), c.end());
-	int i = 0;
+    
+	i = 0;
 	while (c[i++] == '0');
 	i--;
 	if (i == c.length()) c = '0';
