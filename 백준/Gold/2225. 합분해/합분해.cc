@@ -1,15 +1,14 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <memory.h>
 
 using namespace std;
 
 int n, k;
-unsigned long long dp[201][201];
+int dp[201][201];
 
-unsigned long long sol(int num, int cnt) {
+int sol(int num, int cnt) {
 	if (cnt == 0) {
 		if (num == 0) return 1;
 		else return 0;
