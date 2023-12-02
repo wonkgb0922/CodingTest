@@ -5,8 +5,7 @@
 
 using namespace std;
 
-int n, k;
-int dp[201][201];
+int n, k, dp[201][201];
 
 int sol(int num, int cnt) {
 	if (cnt == 0) {
