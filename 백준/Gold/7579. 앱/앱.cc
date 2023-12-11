@@ -2,7 +2,6 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <memory.h>
 
 using namespace std;
 
