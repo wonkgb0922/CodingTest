@@ -4,7 +4,7 @@
 
 using namespace std;
 
-long long n, a[100000], seg1[400000], seg2[400000];
+int n, a[100000], seg1[400000], seg2[400000];
 
 int construct1(int start, int end, int idx)
 {
