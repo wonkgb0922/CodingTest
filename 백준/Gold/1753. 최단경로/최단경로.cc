@@ -17,13 +17,11 @@ int main()
 	scanf("%d%d", &v, &e);
 	scanf("%d", &k);
 	k--;
-	for (int i = 0; i < v; i++) {
+	for (int i = 0; i < v; i++)
 		res[i] = INF;
-	}
 	for (int i = 0; i < e; i++) {
 		scanf("%d%d%d", &in1, &in2, &in3);
-		in1--, in2--;
-		weight[in1].push_back({ in2,in3 });
+		weight[in1 - 1].push_back({ in2 - 1,in3 });
 	}
 	res[k] = 0;
 	pq.push({ 0, k });
@@ -31,7 +29,6 @@ int main()
 	while (!pq.empty()) {
 		auto t = pq.top();
 		pq.pop();
-		if (res[t.second] < t.first) continue;
 		for (auto& it : weight[t.second]) {
 			if (res[it.first] > res[t.second] + it.second) {
 				res[it.first] = res[t.second] + it.second;
