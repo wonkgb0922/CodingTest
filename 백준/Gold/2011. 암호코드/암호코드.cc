@@ -20,15 +20,15 @@ int sol(int idx) {
 		dp[idx] = 0;
 	}
 	else if (s[idx] == '1') {
-		dp[idx] = (sol(idx + 2) + sol(idx + 1)) % 1000000;
+		dp[idx] = sol(idx + 2) + sol(idx + 1);
 	}
 	else if (s[idx] == '2') {
 		if (s[idx + 1] <= '6' && s[idx + 1] >= '0') {
-			dp[idx] = (sol(idx + 2) + sol(idx + 1)) % 1000000;
+			dp[idx] = sol(idx + 2) + sol(idx + 1);
 		}
-		else dp[idx] = sol(idx + 1) % 1000000;
+		else dp[idx] = sol(idx + 1);
 	}	
-	else dp[idx] = sol(idx + 1) % 1000000;
+	else dp[idx] = sol(idx + 1);
 
 	dp[idx] %= 1000000;
 	return dp[idx];
