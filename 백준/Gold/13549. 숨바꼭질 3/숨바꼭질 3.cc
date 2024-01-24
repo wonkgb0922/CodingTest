@@ -18,7 +18,7 @@ int main()
 		return 0;
 	}
 	visited[n] = true;
-	if (n == 0) q.push(n);
+	if (!n) q.push(n);
 	else {
 		for (int i = n; i <= 100000; i *= 2) {
 			q.push(i);
@@ -32,10 +32,8 @@ int main()
 	while (!q.empty()) {
 		level++;
 		qsize = q.size();
-		//printf("\n");
 		while (qsize--) {
 			n = q.front();
-			//printf("%d\n", n);
 			q.pop();
 			if (n == k) {
 				solve = true;
@@ -51,16 +49,6 @@ int main()
 				}
 			}
 			if (n - 1 >= 0) {
-				if (n - 1 == 0) {
-					if (!visited[n - 1]) {
-						if (n - 1 == k) {
-							solve = true;
-							break;
-						}
-						q.push(n - 1);
-						visited[n - 1] = true;
-					}
-				}
 				for (int i = n - 1; i <= 100000; i *= 2) {
 					if (!visited[i]) {
 						q.push(i);
@@ -69,7 +57,6 @@ int main()
 					else break;
 				}
 			}
-			if (solve) break;
 		}
 		if (solve) break;
 	}
