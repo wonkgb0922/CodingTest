@@ -9,12 +9,12 @@ int dp[10001];
 
 int main(void)
 {
-	int n, input;
+	int n, in;
 	vector<int> v;
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++) {
-		scanf("%d", &input);
-		v.push_back(input);
+		scanf("%d", &in);
+		v.push_back(in);
 	}
 	dp[0] = v[0];
 	if (n > 1)
