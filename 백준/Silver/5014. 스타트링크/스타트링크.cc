@@ -20,11 +20,11 @@ int bfs(int num)
 		while (qsize--) {
 			auto t = q.front();
 			q.pop();
-			if (t == g || t == g) return level;\
-			if (t + u <= f && !visited[t + u]) {
-				visited[t + u] = true;
-				q.push(t + u);
-			}
+			if (t == g || t == g) return level;
+				if (t + u <= f && !visited[t + u]) {
+					visited[t + u] = true;
+					q.push(t + u);
+				}
 			if (t - d >= 1 && !visited[t - d]) {
 				visited[t - d] = true;
 				q.push(t - d);
@@ -39,10 +39,9 @@ int main(void)
 	cin >> f >> s >> g >> u >> d;
 
 	if (s == g) printf("0");
-	else
-	{
+	else {
 		int res = bfs(s);
-		if (res != -1) printf("%d", res);
+		if (res > 0) printf("%d", res);
 		else printf("use the stairs");
 	}
 	return 0;
