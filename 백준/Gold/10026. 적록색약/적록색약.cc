@@ -6,10 +6,9 @@
 
 using namespace std;
 
-int n;
 string ary[100];
 bool visited[101][101] = { false };
-int res1 = 0, res2 = 0;
+int n, res1 = 0, res2 = 0;
 int dir[4][2] = { {0,1},{0,-1},{1,0},{-1,0} };
 queue<pair<int, int>> q;
 
