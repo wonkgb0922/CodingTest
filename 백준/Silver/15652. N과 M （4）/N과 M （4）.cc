@@ -3,7 +3,6 @@
 
 using namespace std;
 
-bool visited[9];
 int ary[8], n, m;
 
 void dfs(int cnt)
