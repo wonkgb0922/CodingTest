@@ -4,7 +4,7 @@
 using namespace std;
 
 bool visited[9];
-int ary[9], n, m;
+int ary[8], n, m;
 
 void dfs(int cnt)
 {
@@ -26,7 +26,7 @@ void dfs(int cnt)
     }
 }
 
-int main(void) {
+int main() {
     cin >> n >> m;
     dfs(0);
     return 0;
