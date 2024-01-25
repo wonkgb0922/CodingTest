@@ -3,9 +3,8 @@
 
 using namespace std;
 
-bool visited[9] = { false };
-int ary[9] = { 0 };
-int n, m;
+bool visited[9];
+int ary[9], n, m;
 
 void dfs(int cnt)
 {
