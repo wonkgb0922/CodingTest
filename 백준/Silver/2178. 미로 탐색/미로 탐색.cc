@@ -1,70 +1,49 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
 #include <algorithm>
 #include <queue>
 #include <map>
 
 using namespace std;
 
-int n, m;
 string ary[100];
-bool visited[101][101] = {false};
-
-int bfs()
-{
-	queue<pair<pair<int,int>, int>> q;
-	int level;
-	int i, j;
-	q.push(make_pair(make_pair(0, 0), 1));
-	visited[0][0] = true;
-	while (!q.empty())
-	{
-		i = q.front().first.first;
-		j = q.front().first.second;
-		level = q.front().second + 1;
-		q.pop();
-		if (i == n - 1 && j == m - 1) return --level;
-		if (i - 1 >= 0)
-		{
-			if (!visited[i - 1][j] && ary[i - 1][j] == '1')
-			{
-				visited[i - 1][j] = true;
-				q.push(make_pair(make_pair(i-1, j), level));
-			}
-		}
-		if (i + 1 < n)
-		{
-			if (!visited[i + 1][j] && ary[i + 1][j] == '1')
-			{
-				visited[i + 1][j] = true;
-				q.push(make_pair(make_pair(i + 1, j), level));
-			}
-		}
-		if (j - 1 >= 0)
-		{
-			if (!visited[i][j - 1] && ary[i][j - 1] == '1')
-			{
-				visited[i][j - 1] = true;
-				q.push(make_pair(make_pair(i, j - 1), level));
-			}
-		}
-		if (j + 1 < m)
-		{
-			if (!visited[i][j + 1] && ary[i][j + 1] == '1')
-			{
-				visited[i][j + 1] = true;
-				q.push(make_pair(make_pair(i, j + 1), level));
-			}
-		}
-	}
-}
+bool visited[101][101] = { false };
+int dir[4][2] = { {0,1},{0,-1},{1,0},{-1,0} };
 
 int main(void)
 {
+	int n, m, level = 0, qsize;
+	bool sol = false;
+
 	cin >> n >> m;
 	for (int i = 0; i < n; i++)
 		cin >> ary[i];
-	printf("%d", bfs());
+	queue<pair<int, int>> q;
+	q.push({0,0});
+	visited[0][0] = true;
+	while (!q.empty()) {
+		level++;
+		qsize = q.size();
+		while (qsize--) {
+			auto y = q.front().first;
+			auto x = q.front().second;
+			q.pop();
+			if (y == n - 1 && x == m - 1) {
+				sol = true;
+				break;
+			}
+			for (int i = 0; i < 4; i++) {
+				int nx = x + dir[i][0], ny = y + dir[i][1];
+				if (nx >= 0 && nx < m && ny >= 0 && ny < n) {
+					if (!visited[ny][nx] && ary[ny][nx] == '1') {
+						visited[ny][nx] = true;
+						q.push({ny,nx});
+					}
+				}
+			}
+		}
+		if (sol) break;
+	}
+	printf("%d", level);
 	return 0;
 }
