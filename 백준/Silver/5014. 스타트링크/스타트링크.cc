@@ -38,11 +38,8 @@ int main(void)
 {
 	cin >> f >> s >> g >> u >> d;
 
-	if (s == g) printf("0");
-	else {
-		int res = bfs(s);
-		if (res > 0) printf("%d", res);
-		else printf("use the stairs");
-	}
+	int res = bfs(s);
+	if (res >= 0) printf("%d", res);
+	else printf("use the stairs");
 	return 0;
 }
