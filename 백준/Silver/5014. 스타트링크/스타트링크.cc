@@ -1,6 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
 #include <algorithm>
 #include <queue>
 #include <map>
@@ -12,30 +11,25 @@ bool visited[1000001] = { false };
 
 int bfs(int num)
 {
-	queue<pair<int,int>> q;
-	int level = 1;
-	q.push(make_pair(num, 0));
-	int temp;
-	while (!q.empty())
-	{
-		temp = q.front().first;
-		level = q.front().second + 1;
-
-		q.pop();
-
-		if (temp + u == g || temp - d == g) return level;
-		
-		if (temp + u <= f && !visited[temp + u])
-		{
-			visited[temp + u] = true;
-			q.push(make_pair(temp + u, level));
+	queue<int> q;
+	int level = -1, qsize;
+	q.push(num);
+	while (!q.empty()) {
+		qsize = q.size();
+		level++;
+		while (qsize--) {
+			auto t = q.front();
+			q.pop();
+			if (t == g || t == g) return level;\
+			if (t + u <= f && !visited[t + u]) {
+				visited[t + u] = true;
+				q.push(t + u);
+			}
+			if (t - d >= 1 && !visited[t - d]) {
+				visited[t - d] = true;
+				q.push(t - d);
+			}
 		}
-		if (temp - d >= 1 && !visited[temp - d])
-		{
-			visited[temp - d] = true;
-			q.push(make_pair(temp - d, level));
-		}
-		
 	}
 	return -1;
 }
