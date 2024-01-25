@@ -17,8 +17,7 @@ int main(void)
 		v.push_back(in);
 	}
 	dp[0] = v[0];
-	if (n > 1)
-	{
+	if (n > 1) {
 		dp[1] = v[0] + v[1];
 		if (n > 2) {
 			dp[2] = max(dp[1], v[1] + v[2]);
