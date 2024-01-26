@@ -4,7 +4,7 @@
 using namespace std;
 
 bool visited[9];
-int ary[8], n, m;
+int ary[9], n, m;
 
 void dfs(int cnt)
 {
@@ -16,7 +16,7 @@ void dfs(int cnt)
     }
     for (int i = 1; i <= n; i++) {
         if (!visited[i]) {
-            if (ary[cnt - 1] < i || ary[cnt] == 0) {
+            if (cnt == 0 || ary[cnt - 1] < i) {
                 visited[i] = true;
                 ary[cnt] = i;
                 dfs(cnt + 1);
@@ -26,7 +26,7 @@ void dfs(int cnt)
     }
 }
 
-int main() {
+int main(void) {
     cin >> n >> m;
     dfs(0);
     return 0;
