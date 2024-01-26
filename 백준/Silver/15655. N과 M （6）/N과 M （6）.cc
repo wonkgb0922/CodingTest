@@ -1,42 +1,27 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <memory.h>
 
 using namespace std;
 
-int n, m;
 vector<int> v;
-int res[8] = { 0 };
-bool visited[8] = { false };
+int res[8], n, m;
+bool visited[8];
 
 
 void dfs(int cnt)
 {
-	if (cnt >= m)
-	{
-		for (int i = 0; i < m; i++) {
+	if (cnt >= m) {
+		for (int i = 0; i < m; i++)
 			printf("%d ", res[i]);
-		}
 		printf("\n");
 		return;
 	}
-	for (int i = 0; i < n; i++)
-	{
+	for (int i = 0; i < n; i++) {
 		if (!visited[i]) {
-			if (cnt > 0)
-			{
-				if (res[cnt-1] < v[i])
-				{
-					res[cnt] = v[i];
-					visited[i] = true;
-					dfs(cnt + 1);
-					visited[i] = false;
-				}
-			}
-			else {
+			if (cnt == 0 || res[cnt - 1] < v[i]) {
 				res[cnt] = v[i];
 				visited[i] = true;
 				dfs(cnt + 1);
