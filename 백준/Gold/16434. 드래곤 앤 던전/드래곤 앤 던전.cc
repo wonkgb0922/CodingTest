@@ -1,52 +1,39 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include <stdio.h>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 
 using namespace std;
 
-long long int l = 1, r = 9223372036854775807, mid, hp, atk, satk, ans;
+long long int l = 1, r = 9223372036854775807, mid, hp, atk, satk, m_hp, ans;
 long long int ary[123457][3];
 
-int main(void)
+int main()
 {
 	int N;
 
 	cin >> N >> atk;
 	for (int i = 0; i < N; i++)
-	{
 		scanf("%lld%lld%lld", &ary[i][0], &ary[i][1], &ary[i][2]);
-		//if (ary[i][0] == 1) r += ary[i][1] * ary[i][2];
-		//if (r > 9223372036854775807) r = 9223372036854775807;
-	}
-	while (r >= l)
-	{
+	while (r >= l) {
 		mid = (l + r) / 2;
 		hp = mid;
 		satk = atk;
-		//printf("%lld %lld %lld\n", l, mid, r);
-		for (int i = 0; i < N; i++)
-		{
-			if (ary[i][0] == 1)
-			{
-				// 몬스터와 조우시
-				if (ary[i][2] % satk == 0) hp -= ((ary[i][2] / satk) - 1) * ary[i][1];
-				else hp -= (ary[i][2] / satk) * ary[i][1];
-				//printf("hp : %lld\n", hp);
-				if (hp <= 0)
-				{
-					// 사망시
-					break;
+		for (int i = 0; i < N; i++) {
+			if (ary[i][0] == 1) {
+				m_hp = ary[i][2] - satk;
+				if (m_hp > 0) {
+					hp -= (m_hp / satk) * ary[i][1];
+					if (m_hp % satk > 0) hp -= ary[i][1];
 				}
+				if (hp <= 0) break;
 			}
-			else
-			{
+			else {
 				satk += ary[i][1];
-				hp = min(ary[i][2] + hp, mid);
+				hp += ary[i][2];
+				if (hp > mid) hp = mid;
 			}
 		}
-		
 		if (hp <= 0) l = mid + 1;
 		else {
 			r = mid - 1;
@@ -55,4 +42,5 @@ int main(void)
 	}
 	printf("%lld", ans);
 	
+	return 0;
 }
