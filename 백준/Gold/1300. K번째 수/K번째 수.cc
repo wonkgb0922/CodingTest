@@ -1,7 +1,5 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
-#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -12,13 +10,11 @@ int main()
 	int cnt;
 	cin >> n >> k;
 	int l = 1, r = k, mid;
-	while (l <= r)
-	{
+	while (l <= r) {
 		mid = (l + r) / 2;
 		cnt = 0;
 		for (int i = 1; i <= n; i++)
 			cnt += min(mid / i, n);
-
 		if (cnt >= k) r = mid - 1;
 		else l = mid + 1;
 	}
