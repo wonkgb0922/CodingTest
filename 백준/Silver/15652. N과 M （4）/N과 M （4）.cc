@@ -14,13 +14,7 @@ void dfs(int cnt)
         return;
     }
     for (int i = 1; i <= n; i++) {
-        if (cnt > 0) {
-            if (ary[cnt - 1] <= i) {
-                ary[cnt] = i;
-                dfs(cnt + 1);
-            }
-        }
-        else {
+        if (cnt == 0 || ary[cnt - 1] <= i) {
             ary[cnt] = i;
             dfs(cnt + 1);
         }
