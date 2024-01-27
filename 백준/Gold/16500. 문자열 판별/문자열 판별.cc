@@ -1,39 +1,37 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <iostream>
-#include <vector>
 #include <algorithm>
+#include <memory.h>
 
 using namespace std;
 
-bool dp[100] = { false };
-string v[101];
+string S, ary[101];
+int n, dp[101];
 
-int main()
+bool word(int k)
 {
-	// 16500 문자열 판별
-	int n;
-	string s, input;
-	cin >> s;
-	cin >> n;
-	bool res = false;
+	if (k == S.length()) return true;
+	int& res = dp[k];
 
-	for (int i = 0; i < n; i++)
-		cin >> v[i];
-	//dp[0] = true;
-	int size = s.length();
-	dp[size] = true;
-	for (int i = size; i >= 0; i--)
-	{
-		for(int j = 0; j < n; j++)
-		{
-			if (size < v[j].length() + i) continue;
-			if (s.find(v[j], i) == i)
-			{
-				dp[i] = dp[i] || dp[i + v[j].length()];
-			}
-		}
+	if (res != -1) return res;
+	res = 0;
+
+	for (int i = 0; i < n; i++) {
+		if (S.length() < ary[i].length() + k) continue;
+		if (S.find(ary[i], k) == k)
+			res = res || word(k + ary[i].length());
 	}
-	cout << dp[0];
+	return res;
+}
+
+int main(void) {
+
+	cin >> S;
+	cin >> n;
+	for (int i = 0; i < n; i++)
+		cin >> ary[i];
+	memset(dp, -1, sizeof(dp));
+
+	cout << word(0);
 	return 0;
 }
