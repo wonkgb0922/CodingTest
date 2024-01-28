@@ -53,7 +53,6 @@ long long arr(int b, int e)
 }
 int main(void) {
     int n;
-    
 
     while (true) {
         scanf("%d", &n);
