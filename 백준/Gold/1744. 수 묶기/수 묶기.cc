@@ -37,15 +37,11 @@ int main() {
                     isMinus = false;
                 }
                 else {
-                    if (i + 1 < n && ary[i + 1] < 0) {
-                        res += ary[i] * ary[i + 1];
-                        i++;
-                    }
-                    else res += ary[i];
+                    res += ary[i] * ary[i + 1];
+                    i++;
                 }
             }
         }
-       // printf("%d\n", res);
     }
     printf("%d", res);
 
