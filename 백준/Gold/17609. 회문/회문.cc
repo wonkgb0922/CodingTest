@@ -31,14 +31,11 @@ int main()
 				j--;
 			}
 			else {
-				if (isPal(i + 1, j) || isPal(i, j - 1)) {
+				if (isPal(i + 1, j) || isPal(i, j - 1))
 					res = 1;
-					break;
-				}
-				else {
+				else 
 					res = 2;
-					break;
-				}
+				break;
 			}
 		}
 		cout << res << "\n";
