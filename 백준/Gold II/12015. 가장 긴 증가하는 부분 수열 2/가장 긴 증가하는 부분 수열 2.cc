@@ -9,7 +9,7 @@ vector<int> v;
 
 int main()
 {
-	int n, in, j, res = 0;
+	int n, in;
 
 	cin >> n;
 	for (int i = 0; i < n; i++) {
