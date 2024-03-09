@@ -10,12 +10,10 @@ vector<pair<int, int>> v;
 int sol(int idx) {
 	if (idx == n) return 0;
 	if (dp[idx]) return dp[idx];
-	if (idx + v[idx].first <= n) {
+	if (idx + v[idx].first <= n)
 		dp[idx] = max(sol(idx + v[idx].first) + v[idx].second, sol(idx + 1));
-	}
-	else if (idx + 1 <= n) {
+	else
 		dp[idx] = sol(idx + 1);
-	}
 	return dp[idx];
 }
 
