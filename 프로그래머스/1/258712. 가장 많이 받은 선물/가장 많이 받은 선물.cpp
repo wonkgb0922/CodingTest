@@ -10,7 +10,7 @@ int solution(vector<string> friends, vector<string> gifts) {
     int answer = 0;
     map<string, multiset<string>> m;
     multiset<string> s1, s2; // 준 것 받은 것 카운트 위함
-    int cnt[50];
+    int val[50];
     vector<int> v(50);
     string a, b;
     
@@ -31,7 +31,7 @@ int solution(vector<string> friends, vector<string> gifts) {
         s2.insert(b);
     }
     for(int i = 0; i < friends.size(); i++) {
-        cnt[i] = s1.count(friends[i]) - s2.count(friends[i]);
+        val[i] = s1.count(friends[i]) - s2.count(friends[i]);
     }
     for(int i = 0; i < friends.size(); i++) {
         auto t = m.find(friends[i]);
@@ -45,9 +45,9 @@ int solution(vector<string> friends, vector<string> gifts) {
             else if(l < r)
                 v[j]++;
             else {
-                if(cnt[i] < cnt[j])
+                if(val[i] < val[j])
                     v[j]++;
-                else if(cnt[i] > cnt[j])
+                else if(val[i] > val[j])
                     v[i]++;
             }
         }
