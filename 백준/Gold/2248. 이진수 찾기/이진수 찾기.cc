@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <memory.h>
 
 using namespace std;
@@ -47,6 +46,7 @@ int main()
 {
 	memset(dp, -1, sizeof(dp));
 	cin >> N >> L >> I;
+    
 	build(N, L, I - 1, 0);
 
 	cout << res;
