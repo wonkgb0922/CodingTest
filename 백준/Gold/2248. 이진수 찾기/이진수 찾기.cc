@@ -32,7 +32,7 @@ void build(int n, int m, long long int k, int idx)
 		return;
 	}
 	int pivot = sol(n - 1, m);
-	if (k < pivot) {
+	if (k <= pivot) {
 		res[idx] = '0';
 		build(n - 1, m, k, idx + 1);
 	}
@@ -47,7 +47,7 @@ int main()
 	memset(dp, -1, sizeof(dp));
 	cin >> N >> L >> I;
     
-	build(N, L, I - 1, 0);
+	build(N, L, I, 0);
 
 	cout << res;
 	return 0;
