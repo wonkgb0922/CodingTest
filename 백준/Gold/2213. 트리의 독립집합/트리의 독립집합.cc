@@ -36,20 +36,17 @@ int sol(int idx, int p)
 void sol2(int idx, int p)
 {
 	visited[idx] = true;
-	if (p) {
-		ary.push_back(idx + 1);
-		for (auto& it : v[idx]) {
-			if (!visited[it])
+	if (p) ary.push_back(idx + 1);
+	for (auto& it : v[idx]) {
+		if (!visited[it]) {
+			if(p)
 				sol2(it, 0);
-		}
-	}
-	else {
-		for (auto& it : v[idx]) {
-			if (!visited[it]) {
+			else {
 				if (dp[it][0] >= dp[it][1])
 					sol2(it, 0);
 				else sol2(it, 1);
 			}
+			
 		}
 	}
 	visited[idx] = false;
