@@ -22,17 +22,14 @@ int sol(int idx, int p)
 			flag = 0;
 			if (p)
 				dp[idx][p] += sol(it, 0);
-			else {
+			else
 				dp[idx][p] += max(sol(it, 0), sol(it, 1));
-			}
 		}		
 	}
 	if (p) dp[idx][p] += w[idx];
 	visited[idx] = false;
-	if (flag) {
-		if (p) return w[idx];
-		return 0;
-	}
+	if (flag && p) return w[idx];
+
 	return dp[idx][p];
 }
 
