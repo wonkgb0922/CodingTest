@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <vector>
 #include <string>
 
 using namespace std;
@@ -26,5 +25,6 @@ int main()
 	else if (!(d % 3)) printf("Fizz");
 	else if (!(d % 5)) printf("Buzz");
 	else printf("%d", d);
+    
 	return 0;
 }
