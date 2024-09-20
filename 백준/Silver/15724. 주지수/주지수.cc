@@ -5,7 +5,6 @@
 using namespace std;
 
 int n, m, k, dp[1025][1025];
-int S[1025][1025];
 
 int main()
 {
@@ -15,7 +14,7 @@ int main()
 	for (int i = 1; i <= n; i++) {
 		for (int j = 1; j <= m; j++) {
 			scanf("%d", &in);
-			dp[i][j] = dp[i - 1][j] + dp[i][j - 1] + in - dp[i-1][j-1];
+			dp[i][j] = dp[i - 1][j] + dp[i][j - 1] + in - dp[i - 1][j - 1];
 		}
 	}
 	cin >> k;
