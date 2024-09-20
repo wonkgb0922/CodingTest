@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include <iostream>
-#include <algorithm>
-#include <vector>
-#include <memory.h>
 
 using namespace std;
 
@@ -20,10 +17,10 @@ int main()
 		}
 	}
 
-	for (int i = 1; i <= n; i++) {
+	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
 			dp[i][j] = S[i][j] + dp[i - 1][j];
-	}
+
 	cin >> k;
 	for (int i = 0; i < k; i++) {
 		scanf("%d%d%d%d", &in, &in2, &in3, &in4);
