@@ -1,4 +1,4 @@
-n = input()
+input()
 l = input().split()
 v = input()
 
