@@ -3,12 +3,11 @@ S = [0 for _ in range(114)]
 res = 0
 for i in range(1, 11):
   S[i] = S[i - 1] + ary[i - 1]
-  if S[i] == 100:
-    res = S[i]
-    break
-  elif S[i] > 100:
-    if S[i] - 100 <= 100 - res:
-      res = S[i]
-    break
   res = S[i]
+  if res == 100:
+    break
+  elif res > 100:
+    if res - 100 > 100 - S[i - 1]:
+      res = S[i - 1]
+    break
 print(res)
