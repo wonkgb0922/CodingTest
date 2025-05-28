@@ -1,16 +1,8 @@
-n, m = map(int, input().split())
+n, k = map(int, input().split())
 ary = list(map(int, input().split()))
-res, cur = 0, 0
-i, j = 0, 0
-for j in range(m):
-    cur += ary[j]
-while j < n:
-    res = max(res, cur)
-    j += 1
-    if j == n:
-        break
-    cur += ary[j]
-    cur -= ary[i]
-    i += 1
+S = [0]; [S.append(S[-1] + x) for x in ary]
 
+res = 0
+for i in range(k, n + 1):
+  res = max(res, S[i]- S[i - k])
 print(res)
