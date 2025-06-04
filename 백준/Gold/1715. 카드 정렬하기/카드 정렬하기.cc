@@ -11,7 +11,7 @@ int main(void) {
 		scanf("%d", &in);
 		q.push(in);
 	}
-	while (q.size() != 1) {
+	while (q.size() > 1) {
 		in = q.top();
 		q.pop();
 		in2 = q.top();
