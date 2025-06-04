@@ -12,6 +12,6 @@ for i in range(n):
             print('0\n')
         else:
             temp = pq.get()
-            print(str(temp[1]) + '\n')
+            print(str(-temp) + '\n')
     else:
-        pq.put((-req, req))
+        pq.put(-req)
