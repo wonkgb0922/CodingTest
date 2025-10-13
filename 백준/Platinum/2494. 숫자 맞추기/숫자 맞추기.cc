@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <algorithm>
-#include <memory.h>
 #include <stack>
 #define inf 1000000000
 
