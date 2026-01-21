@@ -7,7 +7,6 @@
 using namespace std;
 
 queue<pair<short, short>> q;
-bool visited[1000][1000] = {false, };
 int ary[1000][1000] = { 0, };
 const short dir[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };
 
@@ -21,7 +20,6 @@ int main()
 			scanf("%d", &ary[i][j]);
 			if (ary[i][j] == 1) {
 				q.push({ i,j });
-				visited[i][j] = true;
 			}
 			else if (ary[i][j] == 0) cnt++;
 		}
@@ -37,10 +35,10 @@ int main()
 				nextF = f + dir[i][0];
 				nextS = s + dir[i][1];
 				if (nextF >= 0 && nextF < n && nextS >= 0 && nextS < m) {
-					if (ary[nextF][nextS] == 0 && !visited[nextF][nextS]) {	
+					if (ary[nextF][nextS] == 0) {	
 						cnt--;
+                        ary[nextF][nextS] = 1;
 						q.push({ nextF,nextS });
-						visited[nextF][nextS] = true;
 					}
 				}
 			}
