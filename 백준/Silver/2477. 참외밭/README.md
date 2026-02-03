@@ -1,14 +1,18 @@
-# [Silver III] 참외밭 - 2477 
+# [Silver II] 참외밭 - 2477 
 
 [문제 링크](https://www.acmicpc.net/problem/2477) 
 
 ### 성능 요약
 
-메모리: 2020 KB, 시간: 0 ms
+메모리: 11440 KB, 시간: 68 ms
 
 ### 분류
 
-기하학(geometry), 구현(implementation), 수학(math)
+수학, 구현, 기하학
+
+### 제출 일자
+
+2026년 1월 29일 12:55:48
 
 ### 문제 설명
 
