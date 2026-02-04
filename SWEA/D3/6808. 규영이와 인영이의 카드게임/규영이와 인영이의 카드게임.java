@@ -32,16 +32,15 @@ public class Solution {
         		in = Integer.parseInt(st.nextToken());
         		visited[in] = true;
         		a.add(in);
-        		capacity += in;
         	}
         	Collections.sort(a, Collections.reverseOrder());
         	for(int i = n * 2; i > 0; i--) {
         		if(!visited[i]) {
         			validB.add(i);
         			b.add(i);
-        			capacity += i;
         		}
         	}
+        	capacity = 9 * 19;
         	win += countWin(-1, 0, 0);
         	sb.append("#").append(t).append(" ").append(win).append(" ").append(getFact(n) - win).append("\n");
         }
