@@ -2,22 +2,18 @@ import java.io.*;
 import java.util.*;
  
 public class Main {
-	static int ary[];
-	static int dis[];
-	static int res;
-	static int n;
 	static int dir[][] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
         PriorityQueue<Node> pq;
-        int t = 1, i, j, next;
+        int t = 1, n, i, j, next;
+        int ary[], dis[];
         Node v;
         while(true) {
         	n = Integer.parseInt(br.readLine());
         	if(n == 0) break;
-        	res = Integer.MAX_VALUE;
             ary = new int[n * n];
             dis = new int[n * n];
             pq = new PriorityQueue<>();
@@ -46,10 +42,8 @@ public class Main {
             		}
             	}
             }
-            
             sb.append("Problem ").append(t++).append(": ").append(dis[n * n - 1]).append("\n");
         }
-        
         System.out.println(sb);
     }
 }
