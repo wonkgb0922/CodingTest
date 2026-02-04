@@ -45,7 +45,6 @@ public class Solution {
         	win += countWin(-1, 0, 0);
         	sb.append("#").append(t).append(" ").append(win).append(" ").append(getFact(n) - win).append("\n");
         }
-        
         System.out.println(sb);
         br.close();
     }
@@ -74,9 +73,7 @@ public class Solution {
         		return 0;
         	}
     	}
-
     	int ret = 0;
-    	
     	for(int i = 0; i < n; i++) {
     		if(!selected[i]) {
     			selected[i] = true;
