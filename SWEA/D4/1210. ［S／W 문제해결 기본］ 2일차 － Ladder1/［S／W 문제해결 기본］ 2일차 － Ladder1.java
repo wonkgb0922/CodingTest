@@ -16,25 +16,21 @@ public class Solution {
         		st = new StringTokenizer(br.readLine());
         		for(j = 0; j < 100; j++) {
         			ary[i][j] = Integer.parseInt(st.nextToken());
-        			if(ary[i][j] == 2) {
+        			if(ary[i][j] == 2)
         				s = j;
-        			}
         		}
         	}
         	i = 99;
         	j = s;
         	while(i > 0) {
-        		if(j + 1 < 100 && ary[i][j + 1] == 1) {
-        			ary[i][j] = 0;
+    			ary[i][j] = 0;
+        		if(j + 1 < 100 && ary[i][j + 1] == 1)
         			j++;
-        		}
-        		else if(j - 1 >= 0 && ary[i][j - 1] == 1) {
-        			ary[i][j] = 0;
+        		else if(j - 1 >= 0 && ary[i][j - 1] == 1)
         			j--;
-        		}
         		else
         			i--;
-        	}        	
+        	}
             sb.append("#").append(t).append(" ").append(j).append("\n");
         }        
         System.out.println(sb);
