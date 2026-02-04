@@ -11,7 +11,7 @@ public class Solution {
 	static List<Integer> a;
 	static List<Integer> validB;
 	static List<Integer> b;
-	static int capacity;
+	static int capacity = 9 * 19;
 	
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,7 +20,6 @@ public class Solution {
         int T = Integer.parseInt(br.readLine());
         int in, win;
         for(int t = 1; t <= T; t++) {
-        	capacity = 0;
         	win = 0;
         	a = new ArrayList<Integer>();
         	st = new StringTokenizer(br.readLine());
@@ -40,7 +39,6 @@ public class Solution {
         			b.add(i);
         		}
         	}
-        	capacity = 9 * 19;
         	win += countWin(-1, 0, 0);
         	sb.append("#").append(t).append(" ").append(win).append(" ").append(getFact(n) - win).append("\n");
         }
