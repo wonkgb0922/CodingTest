@@ -42,13 +42,7 @@ public class Solution {
         			capacity += i;
         		}
         	}
-        	int sp, k;
-        	for(int i = 0; i < n; i++) {
-        		b.set(0, validB.get(i));
-        		selected[i] = true;
-        		win += countWin(0, 0, 0);
-        		selected[i] = false;
-        	}
+        	win += countWin(-1, 0, 0);
         	sb.append("#").append(t).append(" ").append(win).append(" ").append(getFact(n) - win).append("\n");
         }
         
@@ -66,17 +60,19 @@ public class Solution {
     }
 
     static int countWin(int idx, int aScore, int bScore) {
-    	int amount = a.get(idx) + b.get(idx);
-    	if (a.get(idx) > b.get(idx))
-    		aScore += amount;
-    	else
-    		bScore += amount;
-    	
-    	if(aScore > capacity / 2) {
-    		return getFact(n - idx - 1);
-    	}
-    	if(bScore > capacity / 2) {
-    		return 0;
+    	if (idx >= 0) {
+        	int amount = a.get(idx) + b.get(idx);
+        	if (a.get(idx) > b.get(idx))
+        		aScore += amount;
+        	else
+        		bScore += amount;
+        	
+        	if(aScore > capacity / 2) {
+        		return getFact(n - idx - 1);
+        	}
+        	if(bScore > capacity / 2) {
+        		return 0;
+        	}
     	}
 
     	int ret = 0;
