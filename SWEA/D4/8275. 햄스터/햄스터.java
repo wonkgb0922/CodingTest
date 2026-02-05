@@ -42,9 +42,7 @@ class Solution
             		sb.append(res[i]).append(" ");
             	sb.append("\n");
             }
-        }
-        
-        	
+        }        	
         System.out.println(sb);
     }
 	
