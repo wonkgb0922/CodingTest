@@ -38,7 +38,6 @@ class Main
     }
     static boolean sol(int idx, int depth) {
     	if(depth == 5) return true;
-    	if(e[idx] == null) return false;
     	for(int it : e[idx]) {
     		if(!visited[it]) {
     			visited[it] = true;
