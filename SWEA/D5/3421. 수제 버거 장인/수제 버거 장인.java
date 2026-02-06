@@ -47,8 +47,10 @@ class Solution
 	static void dfs(int idx) {
 		res++;
 		if(idx == n - 1) return;
+		
 		for(Pair p : s.subSet(se[idx][0], se[idx][1]))
 			valid[p.second]++;
+		
 		for(int i = idx + 1; i < n; i++) {
 			if(valid[i] == 0)
 				dfs(i);
