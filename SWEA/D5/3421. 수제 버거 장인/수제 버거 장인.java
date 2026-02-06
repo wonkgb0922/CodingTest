@@ -6,6 +6,7 @@ class Solution
 	static int n, m;
 	static int res;
 	static int valid[];
+	static Pair[][] se = new Pair[20][2];
 	static TreeSet<Pair> s = new TreeSet<Pair>();
 	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,6 +14,10 @@ class Solution
         StringTokenizer st;
         int T = Integer.parseInt(br.readLine());
         int in1, in2;
+        for(int i = 0; i < 20; i++) {
+        	se[i][0] = new Pair(i, 0);
+        	se[i][1] = new Pair(i + 1, 0);
+        }
         for(int t = 1; t <= T; t++) {
         	st = new StringTokenizer(br.readLine());
         	n = Integer.parseInt(st.nextToken());
@@ -42,15 +47,13 @@ class Solution
 	static void dfs(int idx) {
 		res++;
 		if(idx == n - 1) return;
-		Pair start = new Pair(idx, 0);
-		Pair end = new Pair(idx + 1, 0);
-		for(Pair p : s.subSet(start, end))
+		for(Pair p : s.subSet(se[idx][0], se[idx][1]))
 			valid[p.second]++;
 		for(int i = idx + 1; i < n; i++) {
 			if(valid[i] == 0)
 				dfs(i);
 		}
-		for(Pair p : s.subSet(start, end))
+		for(Pair p : s.subSet(se[idx][0], se[idx][1]))
 			valid[p.second]--;
 	}
 }
