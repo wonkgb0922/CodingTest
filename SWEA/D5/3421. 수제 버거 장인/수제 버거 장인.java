@@ -20,7 +20,6 @@ class Solution
         	res = 1;
         	valid = new int[n];
             s.clear();
-//        	s = new TreeSet<Pair>();
         	while(m-- > 0) {
         		st = new StringTokenizer(br.readLine());
         		in1 = Integer.parseInt(st.nextToken()) - 1;
@@ -32,9 +31,8 @@ class Solution
         		}
         		s.add(new Pair(in1, in2));
         	}
-        	for(int i = 0; i < n; i++) {
-        		dfs(i);        		
-        	}
+        	for(int i = 0; i < n; i++)
+        		dfs(i);
         	sb.append("#").append(t).append(" ").append(res).append("\n");
 
         }
@@ -46,17 +44,14 @@ class Solution
 		if(idx == n - 1) return;
 		Pair start = new Pair(idx, 0);
 		Pair end = new Pair(idx + 1, 0);
-		for(Pair p : s.subSet(start, end)) {
+		for(Pair p : s.subSet(start, end))
 			valid[p.second]++;
-		}
 		for(int i = idx + 1; i < n; i++) {
-			if(valid[i] == 0) {
+			if(valid[i] == 0)
 				dfs(i);
-			}
 		}
-		for(Pair p : s.subSet(start, end)) {
+		for(Pair p : s.subSet(start, end))
 			valid[p.second]--;
-		}
 	}
 }
 class Pair implements Comparable<Pair> {
