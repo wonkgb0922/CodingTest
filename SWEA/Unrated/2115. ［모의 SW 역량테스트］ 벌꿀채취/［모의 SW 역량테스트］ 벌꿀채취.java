@@ -3,16 +3,14 @@ import java.io.*;
 
 class Solution
 {
-	static int max;
 	static int c;
 	static int ary[][];
-	static int s[];
 	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
         StringTokenizer st;
         int T = Integer.parseInt(br.readLine());
-        int n, m, res, cur, in, sq;
+        int n, m, res;
         int[][] r;
 
         for(int t = 1; t <= T; t++) {
@@ -22,30 +20,24 @@ class Solution
         	c = Integer.parseInt(st.nextToken());
         	ary = new int[n][n];
         	r = new int[n][n - m + 1];
-        	s = new int[m];
         	res = 0;
         	for(int i = 0; i < n; i++) {
         		st = new StringTokenizer(br.readLine());
-        		for(int j = 0; j < n; j++) {
+        		for(int j = 0; j < n; j++)
         			ary[i][j] = Integer.parseInt(st.nextToken());
-        		}
         	}
         	for(int i = 0; i < n; i++) {
         		for(int j = 0; j < n - m + 1; j++) {
         			for(int k = 0; k < m; k++)
             			r[i][j] = Math.max(r[i][j], dfs(i, j + k, 0, 0, m - k - 1));
-        			
         		}
-        	}        	
-        	res = 0;
+        	}
         	for(int i = 0; i < n; i++) {
         		for(int j = 0; j < n - m + 1; j++) {
         			for(int k = i; k < n; k++) {
         				for(int l = 0; l < n - m + 1; l++) {
-        					if(i == k) {
-        						if(l > j + m) continue;
-        						if(l + m > j) continue;
-        					}
+        					if(i == k)
+        						if(l > j + m || l + m > j) continue;
         					res = Math.max(res, r[i][j] + r[k][l]);
         				}
         			}
