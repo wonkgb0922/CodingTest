@@ -21,7 +21,6 @@ class Solution
         	}
         	k--;
         	sb.append("#").append(t).append(" ").append(n * k).append("\n");
-
         }
         System.out.println(sb);
     }
