@@ -1,17 +1,23 @@
 import java.util.*;
+import java.util.function.IntBinaryOperator;
 import java.io.*;
 
 public class Solution {	
 	static int n;
 	static int ary[];
 	static int max, min;
+	static IntBinaryOperator op[];
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
 		
 		int T = Integer.parseInt(br.readLine());
-		
+		op = new IntBinaryOperator[4];
+		op[0] = Integer::sum;
+		op[1] = Math::subtractExact;
+		op[2] = Math::multiplyExact;
+		op[3] = (i1, i2) -> i1 / i2;
 		int state;		
 		for(int t = 1; t <= T; t++) {
 			n = Integer.parseInt(br.readLine());
@@ -38,16 +44,8 @@ public class Solution {
 		}
 		int diff = (1 << 8) - 1;
 		for(int i = 0; i < 4; i++) {
-			if((diff & (state >> (i * 8))) > 0) {
-				if(i == 0)
-					sol(idx + 1, state - (1 << (i * 8)), cur + ary[idx + 1]);
-				else if(i == 1)
-					sol(idx + 1, state - (1 << (i * 8)), cur - ary[idx + 1]);
-				else if(i == 2)
-					sol(idx + 1, state - (1 << (i * 8)), cur * ary[idx + 1]);
-				else
-					sol(idx + 1, state - (1 << (i * 8)), cur / ary[idx + 1]);
-			}
+			if((diff & (state >> (i * 8))) > 0)
+				sol(idx + 1, state - (1 << (i * 8)), op[i].applyAsInt(cur, ary[idx + 1]));
 		}
 	}
 }
