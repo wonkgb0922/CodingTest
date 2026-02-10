@@ -41,6 +41,7 @@ public class Solution {
 		if(idx == n - 1) {
 			max = Math.max(max, cur);
 			min = Math.min(min, cur);
+            return;
 		}
 		int diff = (1 << 8) - 1;
 		for(int i = 0; i < 4; i++) {
