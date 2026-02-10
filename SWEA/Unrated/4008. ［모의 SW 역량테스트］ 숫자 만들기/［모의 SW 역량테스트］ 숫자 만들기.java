@@ -7,7 +7,7 @@ public class Solution {
 	static int ary[];
 	static int max, min;
 	static IntBinaryOperator op[];
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
