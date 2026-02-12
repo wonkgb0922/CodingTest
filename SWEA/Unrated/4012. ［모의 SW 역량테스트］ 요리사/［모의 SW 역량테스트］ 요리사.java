@@ -3,9 +3,8 @@ import java.io.*;
 
 class Solution
 {
-	static int n, m;
+	static int n, res;
 	static int ary[][];
-	static int res;
 	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
