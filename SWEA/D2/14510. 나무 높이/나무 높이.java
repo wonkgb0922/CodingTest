@@ -1,53 +1,40 @@
-import java.util.Scanner;
-import java.io.FileInputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 class Solution
 {
-	static int ary[];
-    public static void main(String[] args) throws Exception {
+	public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
         StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
-        int n, m, res, oddCnt, max, even;
-        
+        int in, n, max, oddCnt, left, res;
         for(int t = 1; t <= T; t++) {
-            res = 0;
-            n = Integer.parseInt(br.readLine());
-            ary = new int[n];
-            max = 0;
-            oddCnt = 0;
-            even = 0;
-            st = new StringTokenizer(br.readLine());
-            for(int i = 0; i < n; i++) {
-                ary[i] = Integer.parseInt(st.nextToken());
-                max = Math.max(max, ary[i]);
-            }
-            
-            for(int i = 0; i < n; i++) {
-                if(max == ary[i]) continue;
-                if((max - ary[i]) % 2 == 1) {
-                	oddCnt++;
-                	ary[i]++;
-                }
-                even += max - ary[i];
-            }
-            even -= oddCnt * 2;
-            res = oddCnt * 2;
-            if(even < 0) {
-            	res -= 1; 
-            }
-            else if (even > 0){
-            	int timesThree = even / 3;
-            	res += (timesThree * 2) + (even % 3);
-            }
-            
-            sb.append("#").append(t).append(" ").append(res).append("\n");
+        	n = Integer.parseInt(br.readLine());
+        	oddCnt = 0;
+        	max = 0;
+        	left = 0;
+        	st = new StringTokenizer(br.readLine());
+        	for(int i = 0; i < n; i++) {
+        		in = Integer.parseInt(st.nextToken());
+        		left += in;
+        		max = Math.max(max, in);
+        		if((in & 1) > 0)
+        			oddCnt++;
+        	}
+        	if((max & 1) > 0)
+        		oddCnt = n - oddCnt;
+        	left = (max * n) - left;
+        	left -= oddCnt * 3;
+        	res = oddCnt * 2;
+        	if(left < 0) res--;
+        	else if(left > 0) {
+            	int timesThree = left / 3;
+            	res += (timesThree * 2) + (left % 3);
+        	}
+        	sb.append(String.format("#%d %d\n", t, res));
         }
         System.out.println(sb);
-        br.close();
     }
+
 }
