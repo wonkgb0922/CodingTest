@@ -47,6 +47,7 @@ class Solution
 			return;
 		}
 		if(idx > n - 1) return;
+		if(n - idx + Integer.bitCount(state) < n / 2) return;
 		
 		dfs(idx + 1, state);
 		dfs(idx + 1, state | (1 << idx));
