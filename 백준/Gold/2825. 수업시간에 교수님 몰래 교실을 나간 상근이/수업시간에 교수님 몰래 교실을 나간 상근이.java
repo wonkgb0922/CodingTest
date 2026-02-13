@@ -17,10 +17,12 @@ public class Main {
 				int bias = in.charAt(i) - '0';
 				cur |= 1 << bias;
 			}
-			res += visited[cur];
-			for(int i = 0; i < 1 << 10; i++) {
-				if((i & cur) > 0)
-					visited[i]++;
+			visited[cur]++;
+		}
+		for(int i = 0; i < 1 << 10; i++) {
+			res += visited[i] * (visited[i] - 1) / 2;
+			for(int j = i + 1; j < 1 << 10; j++) {
+				if((i & j) > 0) res += visited[i] * visited[j];
 			}
 		}
 		System.out.println(res);
