@@ -17,7 +17,7 @@ class Solution
         	n = Integer.parseInt(br.readLine());
         	ary = new int[n][n];
         	max = 0;
-        	res = 0;
+        	res = 1;
         	for(int i = 0; i < n; i++) {
         		st = new StringTokenizer(br.readLine());
         		for(int j = 0; j < n; j++) {
@@ -25,7 +25,7 @@ class Solution
         			max = Math.max(ary[i][j], max);
         		}
         	}
-        	for(int k = 0; k < max; k++) {
+        	for(int k = 1; k < max; k++) {
         		visited = new boolean[n][n];
         		cnt = 0;
         		for(int i = 0; i < n; i++) {
