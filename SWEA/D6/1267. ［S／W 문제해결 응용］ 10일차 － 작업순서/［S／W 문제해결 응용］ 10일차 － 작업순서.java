@@ -37,9 +37,8 @@ class Solution
         			if(--cnt[it] == 0)
         				q.offer(it);
         		}
-        		
         	}
-        	sb.append("\n");        	
+        	sb.append("\n");
         }
         System.out.println(sb);
     }
