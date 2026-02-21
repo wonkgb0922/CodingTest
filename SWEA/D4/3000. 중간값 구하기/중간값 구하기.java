@@ -11,7 +11,7 @@ class Solution
         int T = Integer.parseInt(br.readLine());
         PriorityQueue<Integer> min = new PriorityQueue<>();
         PriorityQueue<Integer> max = new PriorityQueue<>(Collections.reverseOrder());
-        int x, res;
+        int x, y, res;
         for(int t = 1; t <= T; t++) {
         	st = new StringTokenizer(br.readLine());
         	n = Integer.parseInt(st.nextToken());
@@ -20,24 +20,27 @@ class Solution
         	min.clear();
         	max.clear();
         	min.offer(x);
-        	max.offer(x);
         	for(int i = 0; i < n; i++) {
         		st = new StringTokenizer(br.readLine());
-        		for(int j = 0; j < 2; j++) {
-            		x = Integer.parseInt(st.nextToken());
-            		if(max.peek() < x) min.offer(x);
-            		else max.offer(x);
+        		x = Integer.parseInt(st.nextToken());
+        		y = Integer.parseInt(st.nextToken());
+        		if(x > y) {
+        			min.offer(x);
+        			max.offer(y);
         		}
-        		while(min.size() != max.size()) {
-        			if(min.size() < max.size()) {
-        				max.poll();
-        				min.offer(max.peek());
-        			}
-        			else {
-        				min.poll();
-        				max.offer(min.peek());
-        			}
+        		else {
+        			min.offer(y);
+        			max.offer(x);
         		}
+        		x = min.peek();
+        		y = max.peek();
+        		if(x < y) {
+        			min.poll();
+        			max.poll();
+        			min.offer(y);
+        			max.offer(x);
+        		}
+        		
         		res += min.peek() % 20171109;
                 res %= 20171109;
         	}
