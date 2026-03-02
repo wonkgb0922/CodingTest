@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-	static int n, m, s, t;
+	static int n, m;
 	static int a[];
 	static boolean visited[];
 	static List<Pair> e[];
@@ -29,14 +29,14 @@ public class Main {
 			e[v].add(new Pair(u, w));
 		}
 		st = new StringTokenizer(br.readLine());
-		s = Integer.parseInt(st.nextToken());
-		t = Integer.parseInt(st.nextToken());
+		u = Integer.parseInt(st.nextToken());
+		v = Integer.parseInt(st.nextToken());
 		PriorityQueue<Node> pq = new PriorityQueue<>();
-		pq.offer(new Node(s, 0, a[s]));
+		pq.offer(new Node(u, 0, a[u]));
 		long level = 0, res = -1;
 		while(!pq.isEmpty()) {
 			Node node = pq.poll();
-			if(node.v == t) {
+			if(node.v == v) {
 				level = node.w;
 				res = node.a;
 				break;
@@ -44,9 +44,8 @@ public class Main {
 			if(visited[node.v]) continue;
 			visited[node.v] = true;
 			for(Pair p : e[node.v]) {
-				if(!visited[p.v]) {
+				if(!visited[p.v])
 					pq.offer(new Node(p.v, p.w + node.w, a[p.v] + node.a));
-				}
 			}
 		}
 		if(res > 0)
