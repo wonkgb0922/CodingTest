@@ -32,21 +32,22 @@ public class Main {
 		}
 		
 		PriorityQueue<Node> pq = new PriorityQueue<>();
-		pq.offer(new Node(1, 0, 0, 0));
+		pq.offer(new Node(1, 0, 0));
 		res[1][0] = 0;
 		while(!pq.isEmpty()) {
 			Node node = pq.poll();
-			if(visited[node.v][node.v2]) continue;
-			visited[node.v][node.v2] = true;
-			for(Edge edge : e[node.v]) {
-				if(res[edge.v][node.v2] > node.w + edge.w - node.k) {
-					res[edge.v][node.v2] = node.w + edge.w - node.k;
-					pq.offer(new Node(edge.v, node.v2, node.w + edge.w, node.k));
+			int v2 = (node.k > 0) ? 1 : 0;
+			if(visited[node.v][v2]) continue;
+			visited[node.v][v2] = true;
+			for(Edge edge : e[node.v]) {				
+				if(res[edge.v][v2] > node.w + edge.w - node.k) {
+					res[edge.v][v2] = node.w + edge.w - node.k;
+					pq.offer(new Node(edge.v, node.w + edge.w, node.k));
 				}
-				if(node.v2 == 0) {
+				if(v2 == 0) {
 					if(res[edge.v][1] > node.w + edge.w - edge.k) {
 						res[edge.v][1] = node.w + edge.w - edge.k;
-						pq.offer(new Node(edge.v, 1, node.w + edge.w, edge.k));
+						pq.offer(new Node(edge.v, node.w + edge.w, edge.k));
 					}
 				}
 			}
@@ -70,18 +71,17 @@ class Edge {
 
 class Node implements Comparable<Node> {
 	int v;
-	int v2;
 	long w;
 	int k;
-	public Node(int v, int v2, long w, int k) {
+	public Node(int v, long w, int k) {
 		this.v = v;
-		this.v2 = v2;
 		this.w = w;
 		this.k = k;
 	}
 	@Override
 	public int compareTo(Node o) {
-		int ret = Integer.compare(this.v2, o.v2);
+		int ret = Integer.compare((this.k == 0) ? 0 : 1000000001,
+				(o.k == 0) ? 0 : 1000000001);
 		return (ret != 0) ? ret : Long.compare(this.w - this.k, o.w - o.k);
 	}
 }
