@@ -22,7 +22,6 @@ public class Solution {
 			r = 1000000000000000001L;
 			while(l < r) {
 				mid = (l + r) / 2 + 1;
-				if(mid == 0) break;
 				sum = 0;
 				for(int i = 0; i < n; i++)
 					sum += ary[i] / mid;
