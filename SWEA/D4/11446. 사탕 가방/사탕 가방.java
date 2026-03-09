@@ -8,7 +8,7 @@ public class Solution {
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		int n;
-		long m, l, r, mid, sum, res = 0;
+		long m, l, r, mid, sum;
 		long ary[];
 		for(int tc = 1; tc <= T; tc++) {
 			st = new StringTokenizer(br.readLine());
@@ -26,16 +26,10 @@ public class Solution {
 				sum = 0;
 				for(int i = 0; i < n; i++)
 					sum += ary[i] / mid;
-				if(m <= sum) {
-					l = mid;
-					res = l;
-				}
-				else if(m > sum) {
-					r = mid - 1;
-					res = r;
-				}
+				if(m <= sum) l = mid;
+				else r = mid - 1;
 			}
-			sb.append(String.format("#%d %d\n", tc, res));
+			sb.append(String.format("#%d %d\n", tc, r));
 		}
 		System.out.println(sb);
 	}
