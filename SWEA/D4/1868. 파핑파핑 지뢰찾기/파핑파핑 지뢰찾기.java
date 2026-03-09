@@ -4,7 +4,7 @@ import java.io.*;
 public class Solution {
 	static int p[];
 	static int dir[][] = {{1, 0}, {1, -1}, {1, 1}, {0, 1}, {0, -1}, {-1, 0}, {-1, 1}, {-1, -1}};
-	static int n, m, res, cnt;
+	static int n, res;
 	static boolean isZero[][];
 	static char ary[][];
 	static int find(int v) {
@@ -30,14 +30,13 @@ public class Solution {
 			isZero = new boolean[n][n];
 			p = new int[n * n];
 			res = n * n;
-			cnt = 0;
 			for(int i = 0; i < n; i++)
 				ary[i] = br.readLine().toCharArray();
 			for(int i = 0; i < n; i++) {
 				for(int j = 0; j < n; j++) {
 					p[i * n + j] = -1;
 					if(ary[i][j] == '*')
-						cnt++;
+						res--;
 					else
 						Zero(i, j);
 				}
@@ -55,7 +54,7 @@ public class Solution {
 					}
 				}
 			}
-			sb.append(String.format("#%d %d\n", tc, res-cnt));
+			sb.append(String.format("#%d %d\n", tc, res));
 		}
 		System.out.print(sb);
 	}
