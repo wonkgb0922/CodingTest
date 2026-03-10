@@ -60,7 +60,7 @@ public class Solution {
 			}
 			sb.append(String.format("#%d %d\n", tc, Math.round(res * e)));
 		}
-		System.out.println(sb);
+		System.out.print(sb);
 	}
 }
 class Edge implements Comparable<Edge> {
