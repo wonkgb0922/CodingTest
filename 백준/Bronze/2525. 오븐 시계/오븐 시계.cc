@@ -6,9 +6,8 @@ using namespace std;
 
 int main()
 {
-	int h, m, in, temp;
-	cin >> h >> m;
-	cin >> in;
+	int h, m, in;
+	cin >> h >> m >> in;
 	
 	printf("%d %d", (h+(m+in)/60)%24, (m+in)%60);
 	return 0;
