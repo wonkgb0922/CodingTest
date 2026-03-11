@@ -13,12 +13,12 @@ public class Main {
 		n = (int)(max - min) + 1;
 		isN = new boolean[n];
 		long sq, start, temp;
-		for(int i = 2; ; i++) {
-			sq = (long)i * i;
+		for(long i = 2; ; i++) {
+			sq = i * i;
 			start = min / sq + ((min % sq > 0) ? 1 : 0);
 			temp = sq * start;
 			if(sq > max) break;
-			while(min <= temp && temp <= max) {
+			while(temp <= max) {
 				isN[(int)(temp - min)] = true;
 				temp += sq;
 			}
