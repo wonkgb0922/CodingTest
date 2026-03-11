@@ -5,55 +5,44 @@
 #include <string>
 #include <queue>
 #include <set>
+
 using namespace std;
 
-queue<int> q;
-bool visited[1000001] = { false, };
+queue<string> q;
+set<string> visited;
+
 int main()
 {
-	int in, next, length, pi, pj, vali, valj;
+	string in, next;
 	int k, MAX = -1, qsize, val;
 
 	cin >> in >> k;
-	for (int i = 10, j = 1;; i *= 10, j++) {
-		if (in / i == 0) {
-			length = j;
-			break;
-		}
-	}
 	q.push(in);
 	while (k > 0) {
 		qsize = q.size();
 		k--;
 		if (!qsize) break;
-		fill(visited, visited + 1000001, false);
+		visited = set<string>();
 		while (qsize--) {
 			in = q.front();
 			q.pop();
-			pi = 1;
-			for (int i = 0; i < length; i++) {
-				pj = pi * 10;
-				for (int j = i + 1; j < length; j++) {
-					vali = (in / pi) % 10;
-					valj = (in / pj) % 10;
-					if (vali == 0 && j == length - 1) continue;
+			//cout << in << endl;
+			for (int i = 0; i < in.length() - 1; i++) {
+				for (int j = i + 1; j < in.length(); j++) {
+					if (i == 0 && in[j] == '0') continue;
 					next = in;
-					next -= vali * pi;
-					next += valj * pi;
-					next -= valj * pj;
-					next += vali * pj;
-					if (!visited[next]) {
-						visited[next] = true;
+					swap(next[i], next[j]);
+					if (visited.find(next) == visited.end()) {
+						visited.insert(next);
 						q.push(next);
 					}
-					pj *= 10;
 				}
-				pi *= 10;
 			}
 		}
 	}
 	while (!q.empty()) {
-		val = q.front();
+		val = stoi(q.front());
+
 		if (MAX < val) MAX = val;
 		q.pop();
 	}
