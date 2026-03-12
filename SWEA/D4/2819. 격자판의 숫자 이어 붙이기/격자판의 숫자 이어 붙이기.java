@@ -44,7 +44,7 @@ public class Solution {
 				}
 				level++;
 			}
-			sb.append(String.format("#%d %d\n", tc, set.size()));
+			sb.append("#").append(tc).append(" ").append(set.size()).append("\n");
 		}
 		System.out.println(sb);
 	}
