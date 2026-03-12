@@ -23,7 +23,7 @@ public class Solution {
 					q.offer(ary[i][j] * 100 + (i * 4 + j));
 				}
 			}
-			level = 2;
+			level = 1;
 			while(!q.isEmpty()) {
 				qsize = q.size();
 				while(qsize-- > 0) {
@@ -31,7 +31,7 @@ public class Solution {
 					i = (cur % 100) / 4;
 					j = (cur % 100) % 4;
 					cur /= 100;
-					if((level & (1 << 3)) == level) {
+					if(level == 7) {
 						set.add(cur);
 						continue;
 					}
@@ -44,7 +44,7 @@ public class Solution {
 				}
 				level++;
 			}
-			sb.append(String.format("#%d %d\n", tc, set.size()));
+			sb.append("#").append(tc).append(" ").append(set.size()).append("\n");
 		}
 		System.out.println(sb);
 	}
