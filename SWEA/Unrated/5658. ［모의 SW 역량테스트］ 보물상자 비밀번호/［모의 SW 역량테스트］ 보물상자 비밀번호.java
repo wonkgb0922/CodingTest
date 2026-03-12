@@ -9,7 +9,6 @@ public class Solution {
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
 		String s;
-		Queue<String> q;
 		HashSet<String> set;
 		TreeSet<Integer> pq;
 		for(int tc = 1; tc <= T; tc++) {
@@ -18,16 +17,12 @@ public class Solution {
 			k = Integer.parseInt(st.nextToken());
 			s = br.readLine();
 			set = new HashSet<>();
-			q = new ArrayDeque<>();
 			pq = new TreeSet<>(Collections.reverseOrder());
-			q.add(s);
-			while(!set.contains(q.peek())) {
-				s = q.poll();
+			while(!set.contains(s)) {
 				set.add(s);
 				for(int i = 0; i < n; i += n / 4)
 					pq.add(Integer.parseInt(s.substring(i, i + n / 4), 16));
-				
-				q.add(s.substring(1).concat(s.charAt(0)+""));
+				s = s.substring(1).concat(s.charAt(0)+"");
 			}
 			Iterator<Integer> it = pq.iterator();
 			while(--k > 0) it.next();
