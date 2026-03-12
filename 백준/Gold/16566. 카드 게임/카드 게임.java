@@ -23,8 +23,7 @@ public class Main {
 			 s = v - 1;
 			 while(s > 0) {
 				 if(p[s] > 0 && p[s] < v) break;
-				 p[s] = v;
-				 s--;
+				 p[s--] = v;
 			 }
 		}
 		st = new StringTokenizer(br.readLine());
