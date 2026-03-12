@@ -5,6 +5,15 @@ public class Main {
 	static int n, m, k;
 	static int p[];
 	
+	static int find(int v) {
+		if(p[v] <= 0) return v;
+		return p[v] = find(p[v]);
+	}
+	
+	static void merge(int a) {
+		int pa = find(a);
+		p[find(a)] = find(pa + 1);
+	}
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -14,23 +23,20 @@ public class Main {
 		k = Integer.parseInt(st.nextToken());
 		p = new int[n + 1];
 		int v;
-		for(int i = 1; i <= n; i++)
-			p[i] = -1;
 		st = new StringTokenizer(br.readLine());
-		int s;
+		for(int i = 0; i < n; i++) {
+			p[i] = i + 1;
+		}
+		p[n] = 0;
 		for(int i = 0; i < m; i++) {
-			 v = Integer.parseInt(st.nextToken());
-			 s = v - 1;
-			 while(s > 0) {
-				 if(p[s] > 0 && p[s] < v) break;
-				 p[s--] = v;
-			 }
-		}		
+			v = Integer.parseInt(st.nextToken());
+			p[v] = 0;
+		}
 		st = new StringTokenizer(br.readLine());
 		for(int i = 0; i < k ; i++) {
 			v = Integer.parseInt(st.nextToken());
-			sb.append(p[v]).append("\n");
-			p[v] = p[p[v]];
+			sb.append(find(v + 1)).append("\n");
+			merge(v + 1);
 		}
 		System.out.println(sb);
 	}
