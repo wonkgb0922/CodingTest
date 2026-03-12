@@ -9,7 +9,7 @@ public class Solution {
 		StringTokenizer st;
 		StringBuilder sb = new StringBuilder();
 		int T = Integer.parseInt(br.readLine());
-		int qsize, cur, level, idx, i, j;
+		int qsize, cur, level, i, j, ii, jj;
 		ary = new int[4][4];
 		Queue<Integer> q;
 		HashSet<Integer> set;
@@ -31,13 +31,13 @@ public class Solution {
 					i = (cur % 100) / 4;
 					j = (cur % 100) % 4;
 					cur /= 100;
-					if(level == 7) {
+					if(level + 1 == (1 << 3)) {
 						set.add(cur);
 						continue;
 					}
 					for(int d = 0; d < 4; d++) {
-						int ii = i + dir[d][0];
-						int jj = j + dir[d][1];
+						ii = i + dir[d][0];
+						jj = j + dir[d][1];
 						if(ii >= 0 && ii < 4 && jj >= 0 && jj < 4)
 							q.offer((cur * 10 + ary[ii][jj]) * 100 + (ii * 4 + jj));
 					}
@@ -46,6 +46,6 @@ public class Solution {
 			}
 			sb.append(String.format("#%d %d\n", tc, set.size()));
 		}
-		System.out.print(sb);
+		System.out.println(sb);
 	}
 }
