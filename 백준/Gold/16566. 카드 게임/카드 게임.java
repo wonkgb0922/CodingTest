@@ -5,10 +5,6 @@ public class Main {
 	static int n, m, k;
 	static int p[];
 	
-	static void merge(int a, int b) {
-		if(p[a] == b) return;
-		
-	}
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -31,9 +27,6 @@ public class Main {
 				 s--;
 			 }
 		}
-//		for(int i = 1; i <= n; i++) {
-//			 System.out.print(p[i] + " ");
-//		}
 		st = new StringTokenizer(br.readLine());
 		for(int i = 0; i < k ; i++) {
 			v = Integer.parseInt(st.nextToken());
