@@ -12,7 +12,7 @@ public class Main {
 	
 	static void merge(int a) {
 		int pa = find(a);
-		p[find(a)] = find(pa + 1);
+		p[pa] = find(pa + 1);
 	}
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,14 +24,11 @@ public class Main {
 		p = new int[n + 1];
 		int v;
 		st = new StringTokenizer(br.readLine());
-		for(int i = 0; i < n; i++) {
+		for(int i = 0; i < n; i++)
 			p[i] = i + 1;
-		}
 		p[n] = 0;
-		for(int i = 0; i < m; i++) {
-			v = Integer.parseInt(st.nextToken());
-			p[v] = 0;
-		}
+		for(int i = 0; i < m; i++)
+			p[Integer.parseInt(st.nextToken())] = 0;
 		st = new StringTokenizer(br.readLine());
 		for(int i = 0; i < k ; i++) {
 			v = Integer.parseInt(st.nextToken());
