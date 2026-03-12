@@ -25,7 +25,7 @@ public class Main {
 				 if(p[s] > 0 && p[s] < v) break;
 				 p[s--] = v;
 			 }
-		}
+		}		
 		st = new StringTokenizer(br.readLine());
 		for(int i = 0; i < k ; i++) {
 			v = Integer.parseInt(st.nextToken());
