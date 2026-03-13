@@ -3,7 +3,7 @@ import java.io.*;
 
 public class Solution {
 	static int n, w, h, dep, res, min;
-	static int ary[][];
+	static int ary[][] = null;
 	static int dir[][] = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
 	
 	public static void main(String[] args) throws Exception {
@@ -16,7 +16,8 @@ public class Solution {
 			n = Integer.parseInt(st.nextToken());
 			w = Integer.parseInt(st.nextToken());
 			h = Integer.parseInt(st.nextToken());
-			ary = new int[h][w];
+			if(ary == null || ary.length < h || ary[0].length < w)
+				ary = new int[h][w];
 			min = h * w;
 			res = 0;
 		
@@ -75,7 +76,7 @@ public class Solution {
 				j = h - 1;
 				while (j >= 0 && ary[j][l] > 0) j--;
 				i = j - 1;
-				while(i >= 0) {
+				while(true) {
 					while(i >= 0 && ary[i][l] == 0) i--;
 					if(i < 0) break;
 					ary[j][l] = ary[i][l];
