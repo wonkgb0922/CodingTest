@@ -75,7 +75,7 @@ public class Solution {
 				j = h - 1;
 				while (j >= 0 && ary[j][l] > 0) j--;
 				i = j - 1;
-				while(true) {
+				while(i >= 0) {
 					while(i >= 0 && ary[i][l] == 0) i--;
 					if(i < 0) break;
 					ary[j][l] = ary[i][l];
