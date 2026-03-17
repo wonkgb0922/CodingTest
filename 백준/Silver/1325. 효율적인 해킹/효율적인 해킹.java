@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
 	static int n, m;
 	static ArrayList<Integer>[] edge;
-	static boolean visited[];
+	static boolean visited[][];
 	static int res[];
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -12,6 +12,7 @@ public class Main {
 		StringBuilder sb = new StringBuilder();
 		n = Integer.parseInt(st.nextToken());
 		m = Integer.parseInt(st.nextToken());
+		visited = new boolean[n + 1][n + 1];
 		edge = new ArrayList[n + 1];
 		res = new int[n + 1];
 		for(int i = 1; i <= n; i++)
@@ -23,16 +24,15 @@ public class Main {
 		Queue<Integer> q = new ArrayDeque<>();
 		int p, max = 0;
 		for(int i = 1; i <= n; i++) {
-			visited = new boolean[n + 1];
 			q.clear();
 			q.offer(i);
-			visited[i] = true;
+			visited[i][i] = true;
 			while(!q.isEmpty()) {
 				p = q.poll();
-				visited[p] = true;
+				visited[i][p] = true;
 				for(int it : edge[p]) {
-					if(!visited[it]) {
-						visited[it] = true;
+					if(!visited[i][it]) {
+						visited[i][it] = true;
 						res[it]++;
 						q.offer(it);
 					}
