@@ -3,7 +3,7 @@ import java.util.*;
 
 public class Main {
 	static int p[];
-	static int n, m, s;
+	static int n, m;
 	
 	static int find(int v) {
 		if(p[v] == 0) return v;
