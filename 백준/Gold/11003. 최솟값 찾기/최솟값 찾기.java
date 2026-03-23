@@ -1,40 +1,49 @@
 import java.io.*;
-import java.util.LinkedList;
-import java.util.StringTokenizer;
+import java.util.*;
 
-public class Main  {
+public class Main {
+	static int n, l;
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		n = Integer.parseInt(st.nextToken());
+		l = Integer.parseInt(st.nextToken());
+		ArrayDeque<Node> dq = new ArrayDeque<>();
+		st = new StringTokenizer(br.readLine());
+		int in;
+		
+		for(int i = 0; i < n; i++) {
+			in = Integer.parseInt(st.nextToken());
+			while(!dq.isEmpty()) {
+				if(dq.peek().idx + l <= i) dq.poll();
+				else break;
+			}
+			if(dq.isEmpty()) {
+				dq.push(new Node(in ,i));
+			}
+			else {
+				if(dq.peek().val >= in)
+					dq.addFirst(new Node(in, i));
+				else {
+					while(dq.peekLast().val >= in)
+						dq.pollLast();
+					dq.addLast(new Node(in, i));
+				}
+			}
+			sb.append(dq.peek().val).append(" ");
+		}
+		
+		System.out.print(sb);
+	}
+}
 
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
-        st = new StringTokenizer(br.readLine());
-
-        LinkedList<Node> l = new LinkedList<>();
-
-        for(int i = 0; i < n; i++) {
-            int now = Integer.parseInt(st.nextToken());
-            while(!l.isEmpty() && l.getLast().value > now)
-                l.removeLast();
-            l.addLast(new Node(i, now));
-
-            if (l.getFirst().index <= i - m)
-                l.removeFirst();
-            bw.write(l.getFirst().value + " ");
-        }
-        br.close();
-        bw.close();
-    }
-
-    static class Node {
-        public int index;
-        public int value;
-
-        public Node(int index, int value) {
-            this.index = index;
-            this.value = value;
-        }
-    }
+class Node {
+	int val;
+	int idx;
+	public Node(int val, int idx) {
+		this.val = val;
+		this.idx = idx;
+	}
 }
