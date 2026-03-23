@@ -28,18 +28,14 @@ public class Main {
 			a = Integer.parseInt(st.nextToken()) - 1;
 			b = Integer.parseInt(st.nextToken()) - 1;
 			if(max[a][b] == -1) {
-				for(int i = a; i < a + m; i++) {
-					for(int j = b; j < b + m; j++) {
+				for(int i = a; i < a + m; i++)
+					for(int j = b; j < b + m; j++)
 						max[a][b] = Math.max(max[a][b], ary[i][j]);
-					}
-				}
 			}
 			if(min[a][b] == 260) {
-				for(int i = a; i < a + m; i++) {
-					for(int j = b; j < b + m; j++) {
+				for(int i = a; i < a + m; i++)
+					for(int j = b; j < b + m; j++)
 						min[a][b] = Math.min(min[a][b], ary[i][j]);
-					}
-				}
 			}
 			sb.append(max[a][b] - min[a][b]).append("\n");
 		}
