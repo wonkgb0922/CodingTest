@@ -14,13 +14,13 @@ public class Main {
 		max = new int[n][n];
 		min = new int[n][n];
 		int a, b;
-		ArrayDeque<Node> maxdq, mindq;
-		maxdq = new ArrayDeque<>();
-		mindq = new ArrayDeque<>();
+		LinkedList<Node> maxdq, mindq;
+		maxdq = new LinkedList<>();
+		mindq = new LinkedList<>();
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
-			maxdq = new ArrayDeque<>();
-			mindq = new ArrayDeque<>();
+			maxdq = new LinkedList<>();
+			mindq = new LinkedList<>();
 			for(int j = 0; j < n; j++) {
 				a = Integer.parseInt(st.nextToken());
 				while(!maxdq.isEmpty() && maxdq.peek().j + m <= j) maxdq.poll();
@@ -61,8 +61,8 @@ public class Main {
 			}
 		}
 		for(int j = 0; j < n; j++) {
-			maxdq = new ArrayDeque<>();
-			mindq = new ArrayDeque<>();
+			maxdq = new LinkedList<>();
+			mindq = new LinkedList<>();
 			for(int i = 0; i < n; i++) {
 				while(!maxdq.isEmpty() && maxdq.peek().i + m <= i) maxdq.poll();
 				while(!mindq.isEmpty() && mindq.peek().i + m <= i) mindq.poll();
@@ -84,9 +84,8 @@ public class Main {
 					}
 				}
 				// min 갱신
-				if(mindq.isEmpty()) {
+				if(mindq.isEmpty())
 					mindq.add(minNode);
-				}
 				else {
 					if(mindq.peek().val >= min[i][j]) {
 						if(mindq.peek().val == min[i][j])
