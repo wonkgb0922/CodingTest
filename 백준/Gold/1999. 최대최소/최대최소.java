@@ -30,8 +30,11 @@ public class Main {
 				if(maxdq.isEmpty())
 					maxdq.add(node);
 				else {
-					if(maxdq.peek().val <= a)
+					if(maxdq.peek().val <= a) {
+						if(maxdq.peek().val == a)
+							maxdq.pollFirst();
 						maxdq.push(node);
+					}
 					else {
 						while(maxdq.peekLast().val <= a)
 							maxdq.pollLast();
@@ -42,8 +45,11 @@ public class Main {
 				if(mindq.isEmpty())
 					mindq.add(node);
 				else {
-					if(mindq.peek().val >= a)
+					if(mindq.peek().val >= a) {
+						if(mindq.peek().val == a)
+							mindq.pollFirst();
 						mindq.push(node);
+					}
 					else {
 						while(mindq.peekLast().val >= a)
 							mindq.pollLast();
@@ -66,8 +72,11 @@ public class Main {
 				if(maxdq.isEmpty())
 					maxdq.add(maxNode);
 				else {
-					if(maxdq.peek().val <= max[i][j])
+					if(maxdq.peek().val <= max[i][j]) {
+						if(maxdq.peek().val == max[i][j])
+							maxdq.pollFirst();
 						maxdq.push(maxNode);
+					}
 					else {
 						while(maxdq.peekLast().val <= max[i][j])
 							maxdq.pollLast();
@@ -75,11 +84,15 @@ public class Main {
 					}
 				}
 				// min 갱신
-				if(mindq.isEmpty())
+				if(mindq.isEmpty()) {
 					mindq.add(minNode);
+				}
 				else {
-					if(mindq.peek().val >= min[i][j])
+					if(mindq.peek().val >= min[i][j]) {
+						if(mindq.peek().val == min[i][j])
+							mindq.pollFirst();
 						mindq.push(minNode);
+					}
 					else {
 						while(mindq.peekLast().val >= min[i][j])
 							mindq.pollLast();
