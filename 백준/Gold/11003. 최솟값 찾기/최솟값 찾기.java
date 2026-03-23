@@ -20,9 +20,8 @@ public class Main {
 				if(dq.peek().idx + l <= i) dq.poll();
 				else break;
 			}
-			if(dq.isEmpty()) {
+			if(dq.isEmpty())
 				dq.push(new Node(in ,i));
-			}
 			else {
 				if(dq.peek().val >= in)
 					dq.addFirst(new Node(in, i));
@@ -34,7 +33,6 @@ public class Main {
 			}
 			sb.append(dq.peek().val).append(" ");
 		}
-		
 		System.out.print(sb);
 	}
 }
