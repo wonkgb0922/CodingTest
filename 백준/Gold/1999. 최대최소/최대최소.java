@@ -19,8 +19,8 @@ public class Main {
 		mindq = new ArrayDeque<>();
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
-			maxdq.clear();
-			mindq.clear();
+			maxdq = new ArrayDeque<>();
+			mindq = new ArrayDeque<>();
 			for(int j = 0; j < n; j++) {
 				a = Integer.parseInt(st.nextToken());
 				while(!maxdq.isEmpty() && maxdq.peek().j + m <= j) maxdq.poll();
@@ -61,8 +61,8 @@ public class Main {
 			}
 		}
 		for(int j = 0; j < n; j++) {
-			maxdq.clear();
-			mindq.clear();
+			maxdq = new ArrayDeque<>();
+			mindq = new ArrayDeque<>();
 			for(int i = 0; i < n; i++) {
 				while(!maxdq.isEmpty() && maxdq.peek().i + m <= i) maxdq.poll();
 				while(!mindq.isEmpty() && mindq.peek().i + m <= i) mindq.poll();
