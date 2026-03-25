@@ -19,8 +19,8 @@ public class Main {
 		mindq = new ArrayDeque<>();
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
-			maxdq = new ArrayDeque<>();
-			mindq = new ArrayDeque<>();
+			maxdq.clear();
+			mindq.clear();
 			for(int j = 0; j < n; j++) {
 				a = Integer.parseInt(st.nextToken());
 				while(!maxdq.isEmpty() && maxdq.peek().j + m <= j) maxdq.poll();
@@ -31,8 +31,7 @@ public class Main {
 					maxdq.add(node);
 				else {
 					if(maxdq.peek().val <= a) {
-						if(maxdq.peek().val == a)
-							maxdq.pollFirst();
+						maxdq = new ArrayDeque<>();
 						maxdq.push(node);
 					}
 					else {
@@ -46,9 +45,8 @@ public class Main {
 					mindq.add(node);
 				else {
 					if(mindq.peek().val >= a) {
-						if(mindq.peek().val == a)
-							mindq.pollFirst();
-						mindq.push(node);
+						mindq = new ArrayDeque<>();
+						mindq.add(node);
 					}
 					else {
 						while(mindq.peekLast().val >= a)
@@ -61,8 +59,8 @@ public class Main {
 			}
 		}
 		for(int j = 0; j < n; j++) {
-			maxdq = new ArrayDeque<>();
-			mindq = new ArrayDeque<>();
+			maxdq.clear();
+			mindq.clear();
 			for(int i = 0; i < n; i++) {
 				while(!maxdq.isEmpty() && maxdq.peek().i + m <= i) maxdq.poll();
 				while(!mindq.isEmpty() && mindq.peek().i + m <= i) mindq.poll();
@@ -73,8 +71,7 @@ public class Main {
 					maxdq.add(maxNode);
 				else {
 					if(maxdq.peek().val <= max[i][j]) {
-						if(maxdq.peek().val == max[i][j])
-							maxdq.pollFirst();
+						maxdq = new ArrayDeque<>();
 						maxdq.push(maxNode);
 					}
 					else {
@@ -88,8 +85,7 @@ public class Main {
 					mindq.add(minNode);
 				else {
 					if(mindq.peek().val >= min[i][j]) {
-						if(mindq.peek().val == min[i][j])
-							mindq.pollFirst();
+						mindq = new ArrayDeque<>();
 						mindq.push(minNode);
 					}
 					else {
