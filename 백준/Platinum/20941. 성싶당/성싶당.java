@@ -12,7 +12,10 @@ public class Main {
         int idx;
         visited = new boolean[1 << n];
 
-		int p1 = Integer.parseInt(br.readLine(), 2);
+        String in = br.readLine();
+        int p1 = 0;
+        for(int i = 0; i < n; i++)
+        	p1 += (in.charAt(i) == '1') ? (1 << (n - i - 1)) : 0;
 		int pn = p1;
 		int rpn, next = 0;
         while(true) {
