@@ -12,10 +12,10 @@ public class Main {
 		m = Integer.parseInt(st.nextToken());
 		dp = new int[301][301];
 		ary = new int[301][301];
-		for(int i = 0; i <= 300; i++) {
+		for(int i = 0; i <= 300; i++)
 			for(int j = 0; j <= 300; j++)
 				dp[i][j] = -1;
-		}
+		
 		for(int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			ary[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
