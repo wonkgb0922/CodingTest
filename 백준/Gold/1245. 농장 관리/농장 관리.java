@@ -25,10 +25,7 @@ class Main
         	for(int j = 0; j < m; j++) {
         		if(!visited[i][j]) {
         			visited[i][j] = true;
-            		if(dfs(i, j)) {
-            			cnt++;
-            		}
-        			visited[i][j] = false;
+            		if(dfs(i, j)) cnt++;
         		}
         	}
         }
@@ -42,9 +39,8 @@ class Main
     		ii = i + dir[d][0];
     		jj = j + dir[d][1];
     		if(ii >= 0 && ii < n && jj >= 0 && jj < m) {
-    			if(ary[ii][jj] > ary[i][j]) {
+    			if(ary[ii][jj] > ary[i][j])
         			ret = false;
-				}
     			if(!visited[ii][jj]) {
     				if(ary[ii][jj] == ary[i][j]) {
 	    				visited[ii][jj] = true;
