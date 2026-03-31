@@ -2,52 +2,54 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-	static ArrayList<Node>[] edge;
-	static boolean visited[];
+	static int p[];
+
+	static int find(int a) {
+		if(p[a] == 0) return a;
+		return p[a] = find(p[a]);
+	}
+	
+	static void merge(int a, int b) {
+		a = find(a);
+		b = find(b);
+		if(a == b) return;
+		p[a] = b;
+	}
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		int n = Integer.parseInt(st.nextToken()), m = Integer.parseInt(st.nextToken());
-		int cnt, v, u, c, res = 0;
+		int v, u, c, res = 0;
 		Node node;
 		PriorityQueue<Node> pq = new PriorityQueue<>();
-		edge = new ArrayList[n + 1];
-		visited = new boolean[n + 1];
-		for(int i = 1; i <= n; i++)
-			edge[i] = new ArrayList<>();
+		p = new int[n + 1];
 		for(int i = 0; i < m; i++) {
 			st = new StringTokenizer(br.readLine());
 			v = Integer.parseInt(st.nextToken());
 			u = Integer.parseInt(st.nextToken());
 			c = Integer.parseInt(st.nextToken());
-			edge[v].add(new Node(u, c));
-			edge[u].add(new Node(v, c));
+			pq.offer(new Node(v, u, c));
 		}
-		for(Node e : edge[1])
-			pq.offer(e);
-		visited[1] = true;
-		cnt = 1;
+		int cnt = 1;
 		while(!pq.isEmpty()) {
 			node = pq.poll();
-			if(visited[node.idx]) continue;
-			visited[node.idx] = true;
+			if(find(node.a) == find(node.b)) continue;
+			merge(node.a, node.b);
 			res += node.w;
 			cnt++;
 			if(cnt == n) break;
-			for(Node e : edge[node.idx]) {
-				if(!visited[e.idx])
-					pq.offer(e);
-			}
 		}
 		System.out.println(res);
 	}
 }
 
 class Node implements Comparable<Node> {
-	int idx;
+	int a;
+	int b;
 	int w;
-	public Node(int idx, int w) {
-		this.idx = idx;
+	public Node(int a, int b, int w) {
+		this.a = a;
+		this.b = b;
 		this.w = w;
 	}
 	@Override
