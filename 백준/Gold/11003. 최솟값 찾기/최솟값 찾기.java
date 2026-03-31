@@ -23,8 +23,10 @@ public class Main {
 			if(dq.isEmpty())
 				dq.push(new Node(in ,i));
 			else {
-				if(dq.peek().val >= in)
+				if(dq.peek().val >= in) {
+                    dq = new ArrayDeque<>();
 					dq.addFirst(new Node(in, i));
+                }
 				else {
 					while(dq.peekLast().val >= in)
 						dq.pollLast();
