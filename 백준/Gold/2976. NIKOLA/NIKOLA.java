@@ -9,13 +9,11 @@ public class Main {
         n = Integer.parseInt(br.readLine());
         dp = new int[n][n];
         ary = new int[n];
-        for(int i = 0; i < n; i++) {
+        for(int i = 0; i < n; i++)
         	ary[i] = Integer.parseInt(br.readLine());
-        }
         int res = 1000000000;
-        for(int i = 1; i < n; i++) {
+        for(int i = 1; i < n; i++)
         	res = Math.min(res, sol(n - 1, i));
-        }
         System.out.print(res);
     }
     
@@ -36,7 +34,6 @@ public class Main {
     	// 2. 이후에서 왔던가
     	if(idx + jump < n)
     		dp[idx][jump] = Math.min(dp[idx][jump], sol(idx + jump, jump));
-    	
     	dp[idx][jump] += ary[idx];
     	
     	return dp[idx][jump];
