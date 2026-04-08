@@ -13,13 +13,17 @@ public class Main {
 			ary[i] = Integer.parseInt(st.nextToken());
 		for(int i = 1; i <= 100; i++)
 			dp[i] = -1;
-		dp[ary[0]] = 0;
-		for(int i = 1; i < n; i++) {
-			for(int j = 1; j <= 100; j++) {
-				if(dp[j] >= 0)
-					dp[ary[i]] = Math.max(dp[ary[i]], dp[j] + (j - ary[i]) * (j - ary[i]));
-			}
+		System.out.println(sol(n - 1));
+	}
+	static int sol(int idx) {
+		if(idx == 0)
+			return 0;
+        if(dp[ary[idx - 1]] >= 0) return dp[ary[idx - 1]];
+		dp[ary[idx - 1]] = sol(idx - 1);
+		for(int i = 1; i <= 100; i++) {
+			if(dp[i] >= 0)
+				dp[ary[idx]] = Math.max(dp[ary[idx]], dp[i] + (ary[idx] - i) * (ary[idx] - i));
 		}
-		System.out.println(dp[ary[n - 1]]);
+		return dp[ary[idx]];
 	}
 }
