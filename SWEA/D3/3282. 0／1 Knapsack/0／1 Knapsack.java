@@ -31,7 +31,6 @@ public class Solution {
 		if(idx >= n) return 0;
 		if(dp[idx][w] > 0) return dp[idx][w];
 		
-		// 현재 idx를 추가하거나 말거나
 		dp[idx][w] = sol(idx + 1, w);
 		dp[idx][w] = Math.max(dp[idx][w], sol(idx + 1, w + v[idx]) + c[idx]);
 		return dp[idx][w];
