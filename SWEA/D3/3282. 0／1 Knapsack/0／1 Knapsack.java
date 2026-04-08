@@ -27,12 +27,12 @@ public class Solution {
 	}
 	
 	static int sol(int idx, int w) {
-		if(w > k) return -2000000000;
 		if(idx >= n) return 0;
 		if(dp[idx][w] > 0) return dp[idx][w];
 		
 		dp[idx][w] = sol(idx + 1, w);
-		dp[idx][w] = Math.max(dp[idx][w], sol(idx + 1, w + v[idx]) + c[idx]);
+		if(w + v[idx] <= k)
+			dp[idx][w] = Math.max(dp[idx][w], sol(idx + 1, w + v[idx]) + c[idx]);
 		return dp[idx][w];
 	}
 }
