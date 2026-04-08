@@ -5,7 +5,7 @@ public class Main {
 	static int n, m, start, end;
 	static List<Node>[] e;
 	static int[] dp;
-	static boolean visited[][];
+	static boolean visited[];
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
@@ -13,7 +13,7 @@ public class Main {
         n = Integer.parseInt(br.readLine());
         e = new List[n + 1];
         dp = new int[n + 1];
-        visited = new boolean[n + 1][n + 1];
+        visited = new boolean[n + 1];
         int v, u, w;
         for(int i = 1; i <= n; i++)
         	e[i] = new ArrayList<>();
@@ -35,10 +35,12 @@ public class Main {
         while(!q.isEmpty()) {
         	v = q.poll();
         	for(Node it : e[v]) {
-        		if(dp[v] == dp[it.idx] + it.w && !visited[v][it.idx]) {
-        			q.offer(it.idx);
+        		if(dp[v] == dp[it.idx] + it.w) {
         			cnt++;
-        			visited[v][it.idx] = true;
+        			if(!visited[it.idx]) {
+            			q.offer(it.idx);
+            			visited[it.idx] = true;
+        			}
         		}
         	}
         }
