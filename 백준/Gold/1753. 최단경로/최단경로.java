@@ -26,7 +26,7 @@ public class Main {
         	v = Integer.parseInt(st.nextToken());
         	u = Integer.parseInt(st.nextToken());
         	w = Integer.parseInt(st.nextToken());
-        	Node node = new Node(v, u, w);
+        	Node node = new Node(u, w);
         	e[v].add(node);
         	if(v == s)
         		pq.offer(node);
@@ -34,11 +34,11 @@ public class Main {
         dis[s] = 0;
         while(!pq.isEmpty()) {
         	Node peek = pq.poll();
-        	if(dis[peek.u] == INF) {
-        		dis[peek.u] = peek.w;
-            	for(Node node : e[peek.u]) {
-            		if(dis[node.u] == INF)
-                		pq.offer(new Node(node.v, node.u, node.w + dis[peek.u]));
+        	if(dis[peek.v] == INF) {
+        		dis[peek.v] = peek.w;
+            	for(Node node : e[peek.v]) {
+            		if(dis[node.v] == INF)
+                		pq.offer(new Node(node.v, node.w + dis[peek.v]));
             	}
         	}
         }
@@ -50,11 +50,9 @@ public class Main {
 
 class Node implements Comparable<Node> {
 	int v;
-	int u;
 	int w;
-	public Node(int v, int u, int w) {
+	public Node(int v, int w) {
 		this.v = v;
-		this.u = u;
 		this.w = w;
 	}
 	@Override
