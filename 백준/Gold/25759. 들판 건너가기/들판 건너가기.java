@@ -18,7 +18,7 @@ public class Main {
 	static int sol(int idx) {
 		if(idx == 0)
 			return 0;
-        if(dp[ary[idx - 1]] >= 0) return dp[ary[idx - 1]];
+        if(dp[ary[idx]] >= 0) return dp[ary[idx]];
 		dp[ary[idx - 1]] = sol(idx - 1);
 		for(int i = 1; i <= 100; i++) {
 			if(dp[i] >= 0)
