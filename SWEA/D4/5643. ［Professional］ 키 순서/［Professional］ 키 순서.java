@@ -9,7 +9,6 @@ public class Solution {
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
-        int v, u;
         
         for(int tc = 1; tc <= T; tc++) {
         	n = Integer.parseInt(br.readLine());
@@ -17,9 +16,7 @@ public class Solution {
         	dis = new int[n + 1][n + 1];
         	while(m-- > 0) {
         		st = new StringTokenizer(br.readLine());
-        		v = Integer.parseInt(st.nextToken());
-        		u = Integer.parseInt(st.nextToken());
-        		dis[v][u] = 1;
+        		dis[Integer.parseInt(st.nextToken())][Integer.parseInt(st.nextToken())] = 1;
         	}
         	for(int k = 1; k <= n; k++) {
         		for(int i = 1; i <= n; i++) {
