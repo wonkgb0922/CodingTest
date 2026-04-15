@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-	static final int INF = 1000000000;
 	static int n, m;
 	static boolean dis[][];
     public static void main(String[] args) throws Exception {
