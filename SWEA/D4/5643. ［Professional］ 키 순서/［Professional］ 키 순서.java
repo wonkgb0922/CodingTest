@@ -15,9 +15,7 @@ public class Solution {
             n = Integer.parseInt(br.readLine());
             m = Integer.parseInt(br.readLine());
             dis = new boolean[n + 1][n + 1];
-            for(int i = 1; i <= n; i++)
-                dis[i][i] = true;
-             
+            
             while(m-- > 0) {
                 st = new StringTokenizer(br.readLine());
                 v = Integer.parseInt(st.nextToken());
