@@ -14,13 +14,13 @@ void sol(int idx, long long f, long long s) {
 		res = min(res, temp);
 		return;
 	}
+
+	sol(idx + 1, f - ary[idx][0], s - ary[idx][1]);
 	if (cnt < fn) {
 		cnt++;
 		sol(idx + 1, f + ary[idx][0], s + ary[idx][1]);
 		cnt--;
 	}
-
-	sol(idx + 1, f - ary[idx][0], s - ary[idx][1]);
 }
 
 int main()
