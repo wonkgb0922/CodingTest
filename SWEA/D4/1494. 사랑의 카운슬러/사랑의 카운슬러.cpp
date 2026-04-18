@@ -29,15 +29,14 @@ int main()
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	int T, a, b;
+	int T;
 	cin >> T;
 	for (int tc = 1; tc <= T; tc++) {
 		res = 800000000001;
 		cin >> n;
 		fn = n >> 1;
-		for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++)
 			cin >> ary[i][0] >> ary[i][1];
-		}
 		cnt = 1;
 		sol(1, ary[0][0], ary[0][1]);
 		cout << "#" << tc << " " << res << "\n";
