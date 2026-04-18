@@ -3,7 +3,7 @@
 
 using namespace std;
 
-pair<int, int> ary[20];
+int ary[20][2];
 int n, fn;
 long long res;
 
@@ -13,12 +13,12 @@ void sol(int idx, int state, int cnt) {
 		long long f = 0, s = 0, temp;
 		for (int i = 0; i < n; i++) {
 			if (state & (1 << i)) {
-				f += ary[i].first;
-				s += ary[i].second;
+				f += ary[i][0];
+				s += ary[i][1];
 			}
 			else {
-				f -= ary[i].first;
-				s -= ary[i].second;
+				f -= ary[i][0];
+				s -= ary[i][1];
 			}
 		}
 		temp = f * f + s * s;
@@ -42,15 +42,12 @@ int main(void)
 	for (int tc = 1; tc <= T; tc++) {
 		res = 800000000001;
 		cin >> n;
-		fn = n / 2;
+		fn = n >> 1;
 		for (int i = 0; i < n; i++) {
-			cin >> a >> b;
-			ary[i] = { a, b };
+			cin >> ary[i][0] >> ary[i][1];
 		}
 		sol(1, 1, 1);
 		cout << "#" << tc << " " << res << "\n";
 	}
-
-	
 	return 0;
 }
