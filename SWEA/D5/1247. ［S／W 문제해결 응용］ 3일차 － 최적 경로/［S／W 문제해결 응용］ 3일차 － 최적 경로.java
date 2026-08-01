@@ -2,21 +2,22 @@ import java.io.*;
 import java.util.*;
 
 public class Solution {
-    static int dp[][][];
+    static int dp[][];
     static Pos ary[];
     static Pos start, end;
     static int n;
     static final int INF = 1000000000;
 
-    static int sol(int idx, int prev, int state) {
-        if(idx >= n) return getDis(ary[prev], end);
-        if(dp[idx][prev][state] < INF) return dp[idx][prev][state];
+    static int sol(int idx, int state) {
+        if(dp[idx][state] < INF) return dp[idx][state];
+        if(state == (1 << (n + 1)) - 1)
+            return getDis(ary[idx], end);
         for(int i = 1; i <= n; i++) {
             if((state & (1 << i)) > 0) continue;
-            dp[idx][prev][state] = Math.min(dp[idx][prev][state],
-                    sol(idx + 1, i, state | (1 << i)) + getDis(ary[prev], ary[i]));
+            dp[idx][state] = Math.min(dp[idx][state],
+                    sol(i, state | (1 << i)) + getDis(ary[idx], ary[i]));
         }
-        return dp[idx][prev][state];
+        return dp[idx][state];
     }
 
     static int getDis(Pos p1, Pos p2) {
@@ -28,7 +29,7 @@ public class Solution {
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
-        dp = new int[11][11][1 << 11];
+        dp = new int[11][1 << 11];
         ary = new Pos[11];
         for (int t = 1; t <= T; t++) {
             n = Integer.parseInt(br.readLine());
@@ -38,12 +39,10 @@ public class Solution {
             for(int i = 0; i < n; i++) {
                 ary[i + 1] = new Pos(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()));
             }
-            for(int i = 0; i <= n; i++) {
-                for(int j = 0; j <= n; j++)
-                    Arrays.fill(dp[i][j], INF);
-            }
+            for(int i = 0; i <= n; i++)
+                Arrays.fill(dp[i], INF);
 //            Arrays.fill(dp[n], INF);
-            sb.append("#").append(t).append(" ").append(sol(0, 0, 1)).append("\n");
+            sb.append("#").append(t).append(" ").append(sol(0, 1)).append("\n");
         }
         System.out.println(sb);
     }
