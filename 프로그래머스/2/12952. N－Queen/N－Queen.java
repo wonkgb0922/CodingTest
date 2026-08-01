@@ -1,35 +1,35 @@
 class Solution {
-    static int queen[];
-    static boolean visited[];
-    // 대각선
-    static boolean visited1[];
-    static boolean visited2[];
-    static int n;
-    
-    static int dfs(int idx) {
-        if(idx == n) return 1;
-        int ret = 0;
-        for(int i = 0; i < n; i++) {
-            if(visited[i] || visited1[i + idx] || visited2[i - idx + n]) continue;
-            queen[idx] = i;
-            visited[i] = true;
-            visited1[i + idx] = true;
-            visited2[i - idx + n] = true;
-            ret += dfs(idx + 1);
-            visited[i] = false; 
-            visited1[i + idx] = false;
-            visited2[i - idx + n] = false;
+    static int ary[];
+    static int n, cnt = 0;
+
+    static boolean valid(int idx, int val) {
+        for (int i = 0; i < n; i++) {
+            if (ary[i] != 0)
+                if (Math.max(idx - i, i - idx) == Math.max(val - ary[i], ary[i] - val))
+                    return false;
         }
-        return ret;
+        return true;
     }
+
+    static void dfs(int idx, int val) {
+        ary[idx] = val;
+
+        if (val == n) cnt++;
+        for (int i = 0; i < n; i++) {
+            if (ary[i] == 0 && valid(i, val + 1))
+                dfs(i, val + 1);
+        }
+        ary[idx] = 0;
+    }
+
     public int solution(int N) {
         int answer = 0;
+        
         n = N;
-        queen = new int[n];
-        visited = new boolean[n];
-        visited1 = new boolean[2 * n];
-        visited2 = new boolean[2 * n];
-        answer = dfs(0);
+        ary = new int[n];
+        for (int i = 0; i < n; i++)
+		    dfs(i, 1);
+        answer = cnt;
         return answer;
     }
 }
