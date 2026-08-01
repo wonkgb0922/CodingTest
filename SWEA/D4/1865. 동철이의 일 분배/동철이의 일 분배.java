@@ -21,10 +21,10 @@ public class Solution {
         StringTokenizer st;
         StringBuilder sb = new StringBuilder();
         int T = Integer.parseInt(br.readLine());
+        dp = new double[16][1 << 16];
+        ary = new double[16][16];
         for (int t = 1; t <= T; t++) {
             n = Integer.parseInt(br.readLine());
-            dp = new double[n][1 << n];
-            ary = new double[n][n];
             for(int i = 0; i < n; i++) {
                 Arrays.fill(dp[i], -1);
                 st = new StringTokenizer(br.readLine());
