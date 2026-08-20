@@ -57,9 +57,8 @@ public class Solution {
             for(Node it : ary) {
                 int count = query(it.idx - 1);
                 update(it.idx, count + 1);
-                res = Math.max(res, query(it.idx));
+                res = Math.max(res, seg[1]);
             }
-            
             sb.append("#").append(t).append(" ").append(res).append("\n");
         }
         System.out.println(sb);
