@@ -4,7 +4,7 @@ import java.io.*;
 public class Solution {
     static int n, m;
     static int p[] = new int[25], s[] = new int[25];
-    static int dp[][];
+    static int dp[][] = new int[26][1000001];
     static StringBuilder sb = new StringBuilder();
     static int sol(int idx, int cost) {
         if(idx == m) return 0;
@@ -23,7 +23,7 @@ public class Solution {
             // idx를 passing한 경우이다.
             track(idx + 1, cost);
         }
-        else {
+        else if(dp[idx][cost] == dp[idx + 1][cost + p[idx]] + s[idx]) {
             sb.append(idx).append(" ");
             track(idx + 1, cost + p[idx]);
         }
@@ -40,8 +40,9 @@ public class Solution {
                 st = new StringTokenizer(br.readLine());
                 p[i] = Integer.parseInt(st.nextToken());
                 s[i] = Integer.parseInt(st.nextToken());
+                for(int j = 0; j <= n; j++)
+                    dp[i][j] = 0;
             }
-            dp = new int[m + 1][n + 1];
             int res = sol(0, 0);
 
             sb.append("#").append(t).append(" ");
