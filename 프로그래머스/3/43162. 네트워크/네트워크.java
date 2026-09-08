@@ -24,10 +24,9 @@ class Solution {
                 if(computers[i][j] == 1) merge(i + 1, j + 1);
             }
         }
-        Set<Integer> set = new HashSet<>();
         for(int i = 1; i <= n; i++)
-            set.add(find(i));
+            if(p[i] == 0) answer++;
         
-        return set.size();
+        return answer;
     }
 }
