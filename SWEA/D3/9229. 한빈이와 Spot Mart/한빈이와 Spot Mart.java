@@ -23,10 +23,8 @@ public class Solution {
         	j = n - 1;
         	res = -1;
         	while(i < j) {
-        		if(ary[i] + ary[j] <= m) {
-        			res = Math.max(res, ary[i] + ary[j]);
-        			i++;
-        		}
+        		if(ary[i] + ary[j] <= m)
+        			res = Math.max(res, ary[i++] + ary[j]);
         		else j--;
         	}
         	sb.append("#").append(t).append(" ").append(res).append("\n");
