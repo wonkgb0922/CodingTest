@@ -7,8 +7,7 @@ class Solution {
     static final int INF = 1000000000;
     
     public int solution(int N, int[][] road, int K) {
-        int answer = 0;
-        int cnt = 1;
+        int answer = 1;
         dis = new int[N];
         edge = new List[N];
         for(int i = 0; i < N; i++)
@@ -25,16 +24,14 @@ class Solution {
         for(int i = 0; i < edge[0].size(); i++)
             pq.offer(edge[0].get(i));
         while(!pq.isEmpty()) {
-            if(cnt == N) break;
             Node top = pq.poll();
             if(dis[top.v] != INF) continue;
+            if(top.w > K) break;
             dis[top.v] = top.w;
-            cnt++;
+            answer++;
             for(Node node : edge[top.v])
                 pq.offer(new Node(node.v, node.w + top.w));
         }
-        for(int i = 0; i < N; i++)
-            if(dis[i] <= K) answer++;
         return answer;
     }
 }
