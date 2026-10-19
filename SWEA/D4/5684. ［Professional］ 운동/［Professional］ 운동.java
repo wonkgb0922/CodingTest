@@ -11,13 +11,14 @@ public class Solution {
 
     public static void main(String[] args) throws IOException {
         StringTokenizer st;
-        Scanner scan = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
 
-        int T = scan.nextInt();
+        int T = Integer.parseInt(br.readLine());
         for (int t = 1; t <= T; t++) {
-            n = scan.nextInt();
-            m = scan.nextInt();
+            st = new StringTokenizer(br.readLine());
+            n = Integer.parseInt(st.nextToken());
+            m = Integer.parseInt(st.nextToken());
 
             res = INF;
             dis = new int[n];
@@ -26,9 +27,10 @@ public class Solution {
                 edge[i] = new ArrayList<>();
 
             for(int i = 0; i < m; i++) {
-                int s = scan.nextInt() - 1;
-                int e = scan.nextInt() - 1;
-                int c = scan.nextInt();
+                st = new StringTokenizer(br.readLine());
+                int s = Integer.parseInt(st.nextToken()) - 1;
+                int e = Integer.parseInt(st.nextToken()) - 1;
+                int c = Integer.parseInt(st.nextToken());
                 edge[s].add(new Node(e, c));
             }
 
