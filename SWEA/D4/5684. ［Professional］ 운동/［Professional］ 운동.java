@@ -5,7 +5,7 @@ public class Solution {
     static int n, m, res;
     static int dis[];
 
-    static final int INF = 1000000000;
+    static final int INF = 400 * 400 * 10000;
     static List<Node> edge[];
     static PriorityQueue<Node> pq;
 
@@ -41,13 +41,11 @@ public class Solution {
                 // pq 초기화
                 pq = new PriorityQueue<>();
 
-                for(Node node : edge[i])
-                    pq.offer(node);
-
+                pq.offer(new Node(i, 0));
                 while(!pq.isEmpty()) {
                     Node top = pq.poll();
 
-                    if(top.v == i) {
+                    if(top.v == i && top.c != 0) {
                         // 싸이클 존재
                         res = Math.min(res, top.c);
                         break;
