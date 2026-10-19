@@ -3,9 +3,9 @@ import java.io.*;
 
 public class Solution {
     static int n, m, res;
-    static int dis[];
+    static boolean visited[];
 
-    static final int INF = 400 * 400 * 10000;
+    static final int INF = 400 * 10000 + 1;
     static List<Node> edge[];
     static PriorityQueue<Node> pq;
 
@@ -21,7 +21,7 @@ public class Solution {
             m = Integer.parseInt(st.nextToken());
 
             res = INF;
-            dis = new int[n];
+            visited = new boolean[n];
             edge = new List[n];
             for(int i = 0; i < n; i++)
                 edge[i] = new ArrayList<>();
@@ -36,8 +36,8 @@ public class Solution {
 
             for(int i = 0; i < n; i++) {
                 // dis 초기화
-                Arrays.fill(dis, INF);
-                dis[i] = 0;
+                Arrays.fill(visited, false);
+                visited[i] = true;
                 // pq 초기화
                 pq = new PriorityQueue<>();
 
@@ -50,9 +50,9 @@ public class Solution {
                         res = Math.min(res, top.c);
                         break;
                     }
-                    dis[top.v] = top.c;
+                    visited[top.v] = true;
                     for(Node node : edge[top.v]) {
-                        if(dis[node.v] == INF || node.v == i)
+                        if(!visited[node.v] || node.v == i)
                             pq.offer(new Node(node.v, top.c + node.c));
                     }
                 }
