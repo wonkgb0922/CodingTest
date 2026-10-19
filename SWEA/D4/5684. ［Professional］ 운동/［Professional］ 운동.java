@@ -3,6 +3,7 @@ import java.io.*;
 
 public class Solution {
     static int n, m, res;
+    static int dis[];
     static boolean visited[];
 
     static final int INF = 4000001;
@@ -22,6 +23,7 @@ public class Solution {
 
             res = INF;
             visited = new boolean[n];
+            dis = new int[n];
             edge = new List[n];
             for(int i = 0; i < n; i++)
                 edge[i] = new ArrayList<>();
@@ -36,6 +38,7 @@ public class Solution {
 
             for(int i = 0; i < n; i++) {
                 // dis 초기화
+                Arrays.fill(dis, INF);
                 Arrays.fill(visited, false);
                 // pq 초기화
                 pq = new PriorityQueue<>();
@@ -43,15 +46,18 @@ public class Solution {
                 pq.offer(new Node(i, 0));
                 while(!pq.isEmpty()) {
                     Node top = pq.poll();
-                    if(top.v[0] == i && top.v[1] != 0) {
+
+                    if(top.v == i && top.c != 0) {
                         // 싸이클 존재
-                        res = Math.min(res, top.v[1]);
+                        res = Math.min(res, top.c);
                         break;
                     }
-                    visited[top.v[0]] = true;
-                    for(Node node : edge[top.v[0]]) {
-                        if(!visited[node.v[0]] || node.v[0] == i)
-                            pq.offer(new Node(node.v[0], top.v[1] + node.v[1]));
+                    visited[top.v] = true;
+                    for(Node node : edge[top.v]) {
+                        if((!visited[node.v] || node.v == i) && node.c + top.c < dis[node.v]) {
+                            dis[node.v] = node.c + top.c;
+                            pq.offer(new Node(node.v, top.c + node.c));
+                        }
                     }
                 }
 
@@ -65,13 +71,14 @@ public class Solution {
 
 class Node implements Comparable<Node> {
     public Node(int v, int c) {
-        this.v[0] = v;
-        this.v[1] = c;
+        this.v = v;
+        this.c = c;
     }
 
     @Override
     public int compareTo(Node node) {
-        return Integer.compare(this.v[1], node.v[1]);
+        return Integer.compare(this.c, node.c);
     }
-    public int v[] = new int[2];
+    public int v;
+    public int c;
 }
